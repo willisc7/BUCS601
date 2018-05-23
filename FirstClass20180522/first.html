@@ -1,13 +1,23 @@
-<!doctype>
-<html>
+<!doctype html>
+<!-- In HTML everything is a child of everything. -->
+<!-- Teacher uses validator.w3.org to grade -->
+<html lang="en">
 	<head>
+		<title>Foo</title>
 		<meta charset="utf-8"/>
 		<style>
 			h1 {
 				border-bottom: 1px dotted brown;
 			}
+			/* Element selector */
 			ol {
 				width: 50%;
+			}
+			/* Class Selector = Anything starting with . You can call it by saying class=fat.*/
+			.fat {
+				font-size: 34px;
+				letter-spacing: 1in;
+				color: red;
 			}
 		</style>
 	</head>
@@ -29,8 +39,19 @@
 			<li>More Things</li>
 			<li>All the things</li>
 		</ul>
-		<dl>
-
-		</dl>
+		<!-- Tables dont have borders by default. Need to use CSS. Border attribute is depricated
+			(may be unsupported in the future). -->
+		<table>
+			<caption>hi there</caption>
+			<tr>
+				<th>First Column</th>
+				<th>Second Column</th>
+			</tr>
+			<tr>
+				<!-- Presentational elements like <b> are considered deprecated. -->
+				<td><b>1</b></td>
+				<td class="fat">2</td>
+			</tr>
+		</table>
 	</body>
 </html>

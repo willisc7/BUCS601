@@ -6,6 +6,10 @@
 		<title>Foo</title>
 		<meta charset="utf-8"/>
 		<style>
+			body {
+				/* a lot of devs set body margin to 0 because default padding is 8px */
+				margin: 0;
+			}
 			h1 {
 				border-bottom: 1px dotted brown;
 			}
@@ -18,6 +22,12 @@
 				font-size: 34px;
 				letter-spacing: 1in;
 				color: red;
+			}
+			.left {
+				float: left;
+			}
+			.right {
+				float: right;
 			}
 		</style>
 	</head>
@@ -58,12 +68,47 @@
 			<tr>
 				<th>First Column</th>
 				<th>Second Column</th>
+				<th>Third Column</th>
 			</tr>
 			<tr>
 				<!-- Presentational elements like <b> are considered deprecated. -->
 				<td><b>1</b></td>
 				<td class="fat">2</td>
+				<td>stuff</td>
 			</tr>
 		</table>
+		<form name="signup-form" id="form-sign">
+			<!-- form is a way to collect information from a user -->
+			<!-- dont really need a form if you're using javascript -->
+			<!-- form groups controls together to be sent to server all at once -->
+			<!-- id should be unique for an element on a given page, but they can have the same name -->
+			<input type="button" value="foo">
+			<input type="checkbox">
+			<input type="file">
+			<!-- below is an example of grouping, which is same name but different values -->
+			<input type="checkbox" name="foo" value="stuff1">
+			<input type="checkbox" name="foo" value="stuff2">
+			<input type="checkbox" name="foo" value="stuff3">
+			<input type="checkbox" name="foo" value="stuff4">
+			<input type="checkbox" name="foo" value="stuff5">
+			<input type="radio" name="foo" value="stuff1">
+			<input type="radio" name="foo" value="stuff2">
+			<input type="radio" name="foo" value="stuff3">
+			<input type="radio" name="foo" value="stuff4">
+			<input type="radio" name="foo" value="stuff5">
+			<!-- password input type doesn't magically encrypt the value typed in -->
+			<input type="password">
+		</form>
+		<div style="width: 300px"></div>
+			<!-- style width will separate enclosed dev tags by some width -->
+			<div class="left">
+				<!-- div is a blank container that has no elements applied to it -->
+				this is a div
+			</div>
+			<div class="right">
+				this is another div
+			</div>
+		</div>
+		<button>Test</button>
 	</body>
 </html>

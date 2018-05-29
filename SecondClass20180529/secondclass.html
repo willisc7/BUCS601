@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* head and style both contain non-visible elements */
+
+        /* last CSS rule wins according to CSS rubric. 
+        You can override CSS rules using the same selector later*/
+
+        /* caniuse.com will tell you if something is supported by a particular browser */
+
+        /* a lot of people dont support IE 11 because its not supported or actively developed */
+
+        /* CSS 3 did a lot to kill flash because it gave browsers a lot of functionality similar to flash */
+
+        /* jquery supports CSS-style matching */
+
+        /* rule set is a collection of everything listed in this style tag */
+
+        /* transpiler takes code and will output CSS so that multiple browsers will support an action */
+
+        /* old way of doing javascript was <script type=text/javascript></script> and with HTML 5 its just <script> */
+
+        /* selectors include most of the CSS you need to know */
+
+        /* term project should use a ton of selectors */
+        
+        * {
+            /* wildcard selector */
+            /* acts like a regex so this would be global */
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+        }
+        body {
+            margin: 0;
+        }
+        p + div {
+            /* adjacency selector */
+            /* this one says "when you have a paragraph next to a div */
+            /* last thing, div in this case, gets the attribute defined */
+            border-top: 3px solid brown;
+        }
+        div > div {
+            /* descendent selector */
+            background-color: black;
+            color: white;
+        }
+        p {
+            /* element selector */
+            background-color: blue;
+            /* this font-family will override the * one above */
+            font-family: 'Times New Roman', Times, serif;
+            color: #ffffff; 
+            /* entity reference using hex. First two hex digits are red, second blue, and third green. */
+            font-size: 1in;
+        }
+        p, h1, div {
+            /* group selector */
+            border: 2px dotted orange;
+        }
+        p#target, h1[a=b], div.grumpy {
+            /* id selector */
+            /* this will apply to an id attribute called 'target' */
+            background-color: pink;
+            color: #ffffff;
+            font-size: 26px;
+        }
+        .grumpy {
+            /* class selector */
+            width: 50%;
+        }
+        .happy {
+            width: 75%;
+        }
+        [title=cat] {
+            /* attribute selector */
+            /* '*=' means 'contains' */
+            /* attribute selector can be used to select ANYTHING on a page */
+            letter-spacing: 4px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1 title="cat">
+        <!-- text inside a tag is technically a child called a text node -->
+        This is an h1.
+    </h1>
+    <p class="grumpy happy">
+        <!-- happy wins over grumpy because its the last mentioned -->
+        <!-- code generators like react/angular often use multiple selectors -->
+        This is p1.
+        <!-- this div is an immediate descendent of this p tag -->
+        <div>div1</div>
+        <div>
+            <b>this is bold</b>
+        </div>
+        <div>
+            <div>c</div>
+            <div>d</div>
+        </div>
+    </p>
+    <div>
+        <!-- divs are block-level elements so they will take up browser edge to edge -->
+        This is a div.
+    </div>
+    <p id="target">
+        <!-- id syle will take precedence over p style -->
+        This is p2.
+    </p>
+</body>
+</html>>

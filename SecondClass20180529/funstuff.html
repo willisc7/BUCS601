@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun Stuff</title>
+    <style>
+        * {
+            font-weight: bold;
+            font-family: Helvetica, sans-serif;
+        }
+        h1 {
+            color: pink;
+            font-size: 26px;
+        }
+        h1 + p {
+            font-style: italic;
+        }
+        div > div > h1 {
+            border-top: 5px solid rebeccapurple;
+        }
+        div, p {
+            letter-spacing: 5px;
+        }
+        .potato {
+            text-indent: 20%;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="potato">This is a header</h1>
+    <p>This is a paragraph</p>
+    <div>
+        Parent div
+        <div>Child div
+            <h1>Child header</h1>
+        </div>
+    </div>
+</body>
+</html>

@@ -5,6 +5,62 @@
     <script>
         /* script tag isnt rendered, but affects the presentation (dynamic HTML) */
         /* dynamic HTML is HTML + CSS + Javascript */
+        /* script tag can go anywhere in the page, but typically goes in the head */
+
+        var a = 8 + 10; // var struggles with bleeding into global scope so 'let' is preferred
+        let b = 10; // stronger way to declare a variable than var
+        c = 11; // not a good way to declare vars. Puts it in the highest scope (the window object)
+        const d = 12; // new way to say variable cant change once its declared
+
+        // this is a literal (similar to struct). Very common in today's javascript
+        /*         
+        var potato = {
+            name: "chris",
+            age: 26,
+            birthday: new Date("06/30/1991")
+        } */
+
+        // functions have attributes like arguments, name
+
+        // javascript doesnt have data types like short, long, float
+
+        // javascript data type for number is "numberic"
+
+        // everything passed to a javascript function gets stored in .arguments array
+
+        // javascript datatypes are: string, numeric, object, null, undefined
+
+        // string is double or single quote
+
+        // positive number = signed, negative = unsigned
+
+        /*
+        var MailChecker = function(){}; // creates an object
+
+        MailChecker.age = 21;
+        MailChecker.prototype.checkMail = function(){
+        } */
+
+        // MailChecker is the namespace for the checkMail function
+
+        // polymorphism, inheritence, and encapsulation are the three pillars of object-oriented programming
+
+        /*
+        MailChecker.checkMail();
+
+        $.ajax({
+            url: "http://beer.com/api/current?v=1",
+            data: {age: 26},
+            success: function(data) {
+                alert("hi");
+            }
+        });
+        */
+
+        function check(value, name) {
+            console.log("value is", value, "name is", name);
+        }
+
     </script>
 </head>
 
@@ -13,6 +69,11 @@
     <!-- every browser used to have its own "javascript" API -->
     <!-- javascript became really popular once flash and ActiveX fell to standardization -->
     <!-- fullstack devs can do front-end and back-end development -->
+    <!-- size = biggest glyph in font-family so its probably W for Times New Roman -->
+    <!-- every element has an event and onchange is a handler -->
+    <!-- everything a human can do has an event (onload, beforeload, etc.) -->
+    <!-- this = current thing so this.id would be username for the below input-->
+    <input onchange="check(this.value, this.name)" id="username" value="" name="foo" size="100" placeholder="TYPE IN THINGS!!!"/>
 </body>
 
 </html>

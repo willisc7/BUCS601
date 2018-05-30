@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* if float container div is too small things will float down*/
+        /* if float container div is too wide things will float across */
+        body{
+            margin: 0;
+        }
+        div {
+            height: 150px;
+            width: 49.8%;
+            border: 1px solid red;
+        }
+        .left {
+            float: left;
+        }
+        .right {
+            float: right;
+        }
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+
+<!-- body is always 100% -->
+<body>
+
+    <!-- floating means taking a block-level element and putting it wherever you want -->
+    <section id="container">
+        <div class="left">this is one div</div>
+        <div class="right">this is another div</div>
+    </div>
+    
+</body>
+</html>

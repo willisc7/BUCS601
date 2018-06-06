@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+<!-- 
+    TypeScript fundamentals
+    - Improved form of Javascript with data types
+    - const keeps the first value, but attributes can still be manipulated
+    - Different data types give you different reserved space in memory
+    - TypeScript is a superset of Javascript
+    - "old javascript" = 1990-2005 roughly
+    - strings can include external variables
+        - const message:string = 'Hi my name is ${name}!'
+    - let names:string[] = ["ab","bc"];
+        - TypeScript cares what's in arrays whereas old javascript didnt
+    - tuples can have different data types in the
+        - let beerAbv:[string,number] = ["21","ipa"];
+    - enums give a name to a set of numbers
+        - enum Dock{TOP,RIGHT,BOTTOM,LEFT}
+        - Dock.RIGHT will give you the RIGHT value
+    - default language of Angular is TypeScript
+    - enums can be achieved in javascript by using a TypeScript compiler (TSC)
+    - let visible:any = true;
+        - this will be initialized as boolean and can be changed later (like to a string or something else)
+        - need to cast to the proper data type to use APIs like "string.length"
+        - Example of casting: 
+            - let len:number = (val as string).length;
+    - declaring variables with 'var' can also accept any data type
+    - if javascript fails to compile most times everything will not render properly, if at all
+    - TypeScript introduces void or a return type that has no value
+    - Example of void:
+        function debugIt(msg:string):void {
+            console.log(msg)
+        };
+    - never can be used to indicate values that should never occur
+    - arrow functions are another way to define a function
+        (message: string) => {};
+    - undefined and null are subtypes of all other types in TypeScript
+    - === is a strict equality check which means it keeps values compared intact
+        var a = 1;
+        var b = "1";
+        if ( a === b ){
+            will not return true
+        }
+        if ( a !== b ){
+            will return true
+        }o
+    - in old javascript need to use parseInt to get a string to an int
+    - lint and tslint can be used to check your javascript or typescript for errors or bad practices
+
+    ***Averager code review***
+    - npminit creates the package.json file
+        - devDependencies dont get deployed because theyre just used for testing and writing code
+        - dependencies get deployed 
+    - "tsc-init" from within a folder will install things necessary for ts to run
+    - jquery makes using javascript easier
+        - wraps document.getElementById and stuff like that to make js easier to use
+        - document.getElementById(someButton) is without jquery and with jquery its $("#getAverage")
+        - need to ''"import * as $ from "jquery"' to get things following $ to feed through jquery
+    - package.json specifies the main function which is a single javascript file that should be
+    the starting point for the whole app
+    - "npm install" will load all the packages package.json indicates and put them in npm_modules directory
+    - "npm run x" will compile the app where x is defined in packages.json
+
+    ***Control Structures***
+    - contine will continue a loop instead of exiting if an if statement is invoked and you want to continue
+    the loop after something happens
+-->
+</body>
+</html>

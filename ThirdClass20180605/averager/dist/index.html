@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+    <head>
+        <title>TypeScript Exercises</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"/>
+        <style>
+            .button-success,
+            .button-error,
+            .button-warning,
+            .button-secondary {
+                color: white;
+                border-radius: 4px;
+                text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            }
+            .button-success {
+                background: rgb(28, 184, 65); /* this is a green */
+            }
+
+            .button-error {
+                background: rgb(202, 60, 60); /* this is a maroon */
+            }
+
+            .button-warning {
+                background: rgb(223, 117, 20); /* this is an orange */
+            }
+
+            .button-secondary {
+                background: rgb(66, 184, 221); /* this is a light blue */
+            }
+        </style>     
+    </head>
+    <body>
+        <h2>I will find the average of all the numbers you indicate
+            .</h2>
+        <!-- action=# will do nothing and reload the form -->
+        <form class="pure-form" action="#" onsubmit="return false">
+            <input id="target" type="text" id="target" size="3"/>
+
+            <button id="addBtn" 
+               type="button" 
+               class="pure-button pure-button-primary">Add Value</button>
+            <button id="getAverage"
+               type="button" 
+               class="button-warning pure-button">Get Average</button>
+            <button id="getLowest"
+               type="button"
+               class="button-warning pure-button">Get Lowest</button>
+            <button id="reset" 
+               type="button" 
+               class="button-secondary pure-button">Reset</button>
+        </form>
+        <p>
+
+        </p>
+    </body>
+    <!-- Pure HTML and just pull in the javascript in bundle.js -->
+    <script src="./bundle.js"></script>
+</html>

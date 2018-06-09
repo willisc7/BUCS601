@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Age Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <input type="number" name="monthCheck" id="month" min="1" max="12" placeholder="MM">
+    <input type="number" name="dayCheck" id="day" min="1" max="31" placeholder="DD">
+    <input type="number" name="yearCheck" id="year" min="1890" max="2018" placeholder="YYYY">
+    <button class="button" onclick="ageCompare()">Go</button>
+</body>
+
+<script>
+    function ageCompare() {
+        var day = $("#day").val();
+        var month = $("#month").val();
+        var year = $("#year").val();
+        var minAge = 21;
+        var dob = new Date(year, (month - 1), day, 0, 0, 0, 0);
+
+        if ($("#day").val() == "" || $("#month").val() == "" || $("#year").val() == ""){
+            return false;
+        }
+
+        if (getAge(dob) >= minAge) {
+            location.href = "http://www.boomchugalug.com";
+        }
+        else {
+            location.href = "http://www.disney.com";
+        }
+    }
+
+    function getAge(birthDate) {
+        var birthDate = new Date(birthDate)
+        var today = new Date();
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+</script>
+
+</html>

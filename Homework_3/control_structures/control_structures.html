@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
@@ -14,38 +14,38 @@
     <input type="number" name="dayCheck" id="day" min="1" max="31" placeholder="DD">
     <input type="number" name="yearCheck" id="year" min="1890" max="2018" placeholder="YYYY">
     <button class="button" onclick="ageCompare()">Go</button>
+
+    <script>
+        function ageCompare() {
+            var day = $("#day").val();
+            var month = $("#month").val();
+            var year = $("#year").val();
+            var minAge = 21;
+            var dob = new Date(year, (month - 1), day, 0, 0, 0, 0);
+
+            if ($("#day").val() == "" || $("#month").val() == "" || $("#year").val() == "") {
+                return false;
+            }
+
+            if (getAge(dob) >= minAge) {
+                location.href = "http://www.boomchugalug.com";
+            }
+            else {
+                location.href = "http://www.disney.com";
+            }
+        }
+
+        function getAge(birthDate) {
+            var birthDate = new Date(birthDate)
+            var today = new Date();
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var monthDiff = today.getMonth() - birthDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+    </script>
 </body>
-
-<script>
-    function ageCompare() {
-        var day = $("#day").val();
-        var month = $("#month").val();
-        var year = $("#year").val();
-        var minAge = 21;
-        var dob = new Date(year, (month - 1), day, 0, 0, 0, 0);
-
-        if ($("#day").val() == "" || $("#month").val() == "" || $("#year").val() == ""){
-            return false;
-        }
-
-        if (getAge(dob) >= minAge) {
-            location.href = "http://www.boomchugalug.com";
-        }
-        else {
-            location.href = "http://www.disney.com";
-        }
-    }
-
-    function getAge(birthDate) {
-        var birthDate = new Date(birthDate)
-        var today = new Date();
-        var age = today.getFullYear() - birthDate.getFullYear();
-        var monthDiff = today.getMonth() - birthDate.getMonth();
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-        return age;
-    }
-</script>
 
 </html>

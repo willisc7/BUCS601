@@ -8,11 +8,13 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { Rectangle, Circle, Triangle } from './Shape';
 
 const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    width: 150
   },
   button: {
     margin: theme.spacing.unit,
@@ -24,60 +26,17 @@ const styles = theme => ({
   }
 });
 
-class Shape {
-  constructor() {
-    this.name = "";
-  }
-
-  calculateArea() {
-    return 0.00;
-  }
-}
-
-class Circle extends Shape {
-  constructor(radius) {
-    super();
-    this.name = "Circle";
-    this.radius = radius;
-  }
-
-  calculateArea() {
-    return Math.PI * (this.radius * this.radius);
-  }
-}
-
-class Triangle extends Shape {
-  constructor(height_to_base, base) {
-    super();
-    this.name = "Triangle";
-    this.height_to_base = height_to_base;
-    this.base = base;
-  }
-
-  calculateArea() {
-    return (this.height_to_base * this.base) / 2;
-  }
-}
-
-class Rectangle extends Shape {
-  constructor(height, width) {
-    super();
-    this.name = "Rectangle";
-    this.height = height;
-    this.width = width;
-  }
-
-  calculateArea() {
-    return (this.height * this.width);
-  }
-}
-
-class Shapes extends React.Component {
-
+class ShapeUI extends React.Component {
   state = {
     circle: false,
     triangle: false,
     rectangle: false,
+    answer: "",
+    circle_radius: "",
+    triangle_base_to_height: "",
+    triangle_base_length: "",
+    rectangle_width: "",
+    rectangle_height: "",
   };
 
   handleChange = name => event => {
@@ -85,55 +44,60 @@ class Shapes extends React.Component {
   };
 
   handleSubmit = () => {
-    let answer;
     if (this.state.circle === true) {
-      let my_circle = new Circle(50.05);
-      this.answer = my_circle.calculateArea()
+      let my_circle = new Circle(this.state.circle_radius);
+      this.setState({
+        answer: my_circle.calculateArea(),
+      });
     }
     if (this.state.triangle === true) {
-      let my_triangle = new Triangle(20.6, 30.2);
-      this.answer = my_triangle.calculateArea();
+      let my_triangle = new Triangle(this.state.triangle_base_to_height, this.state.triangle_base_length);
+      this.setState({
+        answer: my_triangle.calculateArea(),
+      });
     }
     if (this.state.rectangle === true) {
-      let my_rectangle = new Rectangle(19.5, 23.2);
-      this.answer = my_rectangle.calculateArea();
+      let my_rectangle = new Rectangle(this.state.rectangle_height, this.state.rectangle_width);
+      console.log(this.state.rectangle_height.toString);
+      this.setState({
+        answer: my_rectangle.calculateArea(),
+      });
     }
   };
 
   render() {
     let form;
-    let area = this.answer;
     const { classes } = this.props;
 
     if (this.state.circle === true) {
       form =
         <div>
-          <form className={classes.container} noValidate autoComplete="off">
-            <TextField id="circle" label="Radius" value={this.state.name} margin="normal" className={classes.textField} />
+          <form>
+            <TextField id="circle_radius" label="Radius" value={this.state.name} margin="normal" className={classes.textField} onChange={e => this.setState({ circle_radius: e.target.value })} />
           </form>
         </div>
     }
     if (this.state.triangle === true) {
       form =
         <div>
-          <form className={classes.container} noValidate autoComplete="off">
-            <TextField id="triangle" label="Base to height" value={this.state.name} margin="normal" className={classes.textField} />
-            <TextField id="triangle" label="Base length" value={this.state.name} margin="normal" className={classes.textField} />
+          <form>
+            <TextField id="triangle_base_to_height" label="Base to height" value={this.state.name} margin="normal" className={classes.textField} onChange={e => this.setState({ triangle_base_to_height: e.target.value })} />
+            <TextField id="triangle_base_length" label="Base length" value={this.state.name} margin="normal" className={classes.textField} onChange={e => this.setState({ triangle_base_length: e.target.value })} />
           </form>
         </div>
     }
     if (this.state.rectangle === true) {
       form =
         <div>
-          <form className={classes.container} noValidate autoComplete="off">
-            <TextField id="rectangle" label="Height" value={this.state.name} margin="normal" className={classes.textField} />
-            <TextField id="rectangle" label="Width" value={this.state.name} margin="normal" className={classes.textField} />
+          <form>
+            <TextField id="rectangle_height" label="Height" value={this.state.name} margin="normal" className={classes.textField} onChange={e => this.setState({ rectangle_height: e.target.value })} />
+            <TextField id="rectangle_width" label="Width" value={this.state.name} margin="normal" className={classes.textField} onChange={e => this.setState({ rectangle_width: e.target.value })} />
           </form>
         </div>
     }
 
     return (
-      <div>
+      <div className={classes.container}>
         <FormControl component="fieldset">
           <FormLabel component="legend">Choose shape to calculate area of</FormLabel>
           <FormGroup>
@@ -173,14 +137,14 @@ class Shapes extends React.Component {
         <Button variant="outlined" className={classes.button} onClick={() => this.handleSubmit()}>
           Submit
         </Button>
-        <TextField id="answer" label={this.area} margin="normal" className={classes.textField} />
+        <TextField id="answer" label={this.state.answer} value={this.state.answer} margin="normal" className={classes.textField} />
       </div>
     );
   }
 }
 
-Shapes.propTypes = {
+ShapeUI.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Shapes);
+export default withStyles(styles)(ShapeUI);

@@ -1,0 +1,14 @@
+{
+  "name": "es6",
+  "version": "1.0.0",
+  "description": "Create a abstract class called 'Shape'.   It has one attribute - name:String.  It has one method, 'calculateArea', that takes no arguments and returns the area of a shape.   In 'Shape', it returns 0.00.",
+  "main": "es6.js",
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}

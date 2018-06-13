@@ -1,15 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Arrow Functions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
 </head>
+
 <body>
-    
+    <script>
+        /* Find odd numbers in an array */
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let odd_nums = [];
+
+        let find_odd = (num_array) => {
+            for (let i = 0; i < num_array.length; i++) {
+                if ((num_array[i] % 2) == 1) {
+                    odd_nums.push(num_array[i]);
+                }
+            }
+            console.log("The odd numbers in the array are: " + odd_nums);
+        };
+
+        find_odd(numbers);
+
+        /* Find length of strings in an array */
+        const names = ['mary', 'tark', 'jonsey', 'potter', 'smith', 'spuds-makenzie'];
+
+        let find_str_len = (str_array) => {
+            for (let i = 0; i < str_array.length; i++) {
+                console.log(str_array[i] + " is " + str_array[i].length + " letters long.");
+            }
+        };
+
+        find_str_len(names);
+
+        /* Function that doubles values passed to it */
+        let double = (num) => {
+            console.log(num + " doubled is " + num * 2)
+        };
+
+        double(256);
+
+        /* Function that prints yesterday's date */
+        let get_yesterday = (today) => {
+
+            let yesterday = new Date(today);
+            yesterday.setDate(today.getDate() - 1);
+            let day = yesterday.getDate();
+            let month = yesterday.getMonth() + 1;
+            let year = yesterday.getFullYear();
+            console.log("Yesterday's date was " + month + '/' + day + '/' + year);
+
+        };
+
+        let today = new Date();
+        get_yesterday(today);
+
+        /* Function that returns the day of the week */
+
+        let get_day = (today) => {
+            let weekday = [];
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
+            
+            console.log("Today is " + weekday[today.getDay()]);
+        };
+
+        get_day(today);
+
+
+    </script>
 </body>
 
 </html>

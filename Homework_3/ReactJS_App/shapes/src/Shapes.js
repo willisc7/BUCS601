@@ -5,7 +5,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
-
+import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -14,14 +14,14 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
   },
+  button: {
+    margin: theme.spacing.unit,
+  },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
     width: 200,
-  },
-  menu: {
-    width: 200,
-  },
+  }
 });
 
 class Shapes extends React.Component {
@@ -40,29 +40,29 @@ class Shapes extends React.Component {
     let form;
     const { classes } = this.props;
 
-    if (this.state.circle == true){
-      form = 
+    if (this.state.circle == true) {
+      form =
         <div>
           <form className={classes.container} noValidate autoComplete="off">
-            <TextField id="circle" label="Radius" value={this.state.name} margin="normal" className={classes.textField}/>
+            <TextField id="circle" label="Radius" value={this.state.name} margin="normal" className={classes.textField} />
           </form>
         </div>
     }
-    if (this.state.triangle == true){
-      form = 
+    if (this.state.triangle == true) {
+      form =
         <div>
           <form className={classes.container} noValidate autoComplete="off">
-            <TextField id="triangle" label="Base to height" value={this.state.name} margin="normal" className={classes.textField}/>
-            <TextField id="triangle" label="Base length" value={this.state.name} margin="normal" className={classes.textField}/>
+            <TextField id="triangle" label="Base to height" value={this.state.name} margin="normal" className={classes.textField} />
+            <TextField id="triangle" label="Base length" value={this.state.name} margin="normal" className={classes.textField} />
           </form>
-        </div>    
+        </div>
     }
-    if (this.state.rectangle == true){
-      form = 
+    if (this.state.rectangle == true) {
+      form =
         <div>
           <form className={classes.container} noValidate autoComplete="off">
-            <TextField id="rectangle" label="Height" value={this.state.name} margin="normal" className={classes.textField}/>
-            <TextField id="rectangle" label="Width" value={this.state.name} margin="normal" className={classes.textField}/>
+            <TextField id="rectangle" label="Height" value={this.state.name} margin="normal" className={classes.textField} />
+            <TextField id="rectangle" label="Width" value={this.state.name} margin="normal" className={classes.textField} />
           </form>
         </div>
     }
@@ -105,6 +105,9 @@ class Shapes extends React.Component {
           </FormGroup>
         </FormControl>
         {form}
+        <Button variant="outlined" className={classes.button}>
+          Submit
+        </Button>
       </div>
     );
   }

@@ -20,7 +20,7 @@
                     odd_nums.push(num_array[i]);
                 }
             }
-            console.log("The odd numbers in the array are: " + odd_nums);
+            console.log(`The odd numbers in the array are: ${odd_nums}`);
         };
 
         find_odd(numbers);
@@ -30,7 +30,7 @@
 
         let find_str_len = (str_array) => {
             for (let i = 0; i < str_array.length; i++) {
-                console.log(str_array[i] + " is " + str_array[i].length + " letters long.");
+                console.log(`${str_array[i]} is ${str_array[i].length} letters long.`);
             }
         };
 
@@ -38,7 +38,7 @@
 
         /* Function that doubles values passed to it */
         let double = (num) => {
-            console.log(num + " doubled is " + num * 2)
+            console.log(`${num} doubled is ${num * 2}`)
         };
 
         double(256);
@@ -51,7 +51,7 @@
             let day = yesterday.getDate();
             let month = yesterday.getMonth() + 1;
             let year = yesterday.getFullYear();
-            console.log("Yesterday's date was " + month + '/' + day + '/' + year);
+            console.log(`Yesterday's date was ${month}/${day}/${year}`);
 
         };
 
@@ -70,12 +70,11 @@
             weekday[5] = "Friday";
             weekday[6] = "Saturday";
             
-            console.log("Today is " + weekday[today.getDay()]);
+            console.log(`Today is ${weekday[today.getDay()]}`);
         };
 
         get_day(today);
-
-
+        
     </script>
 </body>
 

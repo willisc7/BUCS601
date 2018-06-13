@@ -4,6 +4,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import TextField from '@material-ui/core/TextField';
 
 class SwitchesGroup extends React.Component {
   state = {
@@ -12,8 +13,52 @@ class SwitchesGroup extends React.Component {
     rectangle: false,
   };
 
-  handleChange = name => event => {
+  renderCircleForm = name => event => {
     this.setState({ [name]: event.target.checked });
+    return (
+      <TextField
+        id="circle"
+        label="Radius"
+        value={this.state.name}
+        margin="normal"
+      />
+    );
+  };
+
+  renderTriangleForm = name => event => {
+    this.setState({ [name]: event.target.checked });
+    return (
+      <TextField
+        id="triangle"
+        label="Base to height"
+        value={this.state.name}
+        margin="normal"
+      />,
+      <TextField
+        id="triangle"
+        label="Base length"
+        value={this.state.name}
+        margin="normal"
+      />
+    );
+  };
+
+  renderRectangleForm = name => event => {
+    this.setState({ [name]: event.target.checked });
+    return (
+      <TextField
+        id="rectangle"
+        label="Height"
+        value={this.state.name}
+        margin="normal"
+      />,
+      <TextField
+        id="rectangle"
+        label="Width"
+        value={this.state.name}
+        margin="normal"
+      />
+    );
   };
 
   render() {
@@ -25,7 +70,7 @@ class SwitchesGroup extends React.Component {
             control={
               <Switch
                 checked={this.state.circle}
-                onChange={this.handleChange('circle')}
+                onChange={this.renderCircleForm('circle')}
                 value="circle"
               />
             }
@@ -35,7 +80,7 @@ class SwitchesGroup extends React.Component {
             control={
               <Switch
                 checked={this.state.jason}
-                onChange={this.handleChange('triangle')}
+                onChange={this.renderTriangleForm('triangle')}
                 value="triangle"
               />
             }
@@ -45,7 +90,7 @@ class SwitchesGroup extends React.Component {
             control={
               <Switch
                 checked={this.state.rectangle}
-                onChange={this.handleChange('rectangle')}
+                onChange={this.renderRectangleForm('rectangle')}
                 value="rectangle"
               />
             }

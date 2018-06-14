@@ -14,21 +14,22 @@ const styles = theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-    width: 150
+    width: 300
   },
   button: {
-    margin: theme.spacing.unit,
+    marginLeft: theme.spacing.unit,
+    marginRight: 200
   },
   textField: {
     marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
+    marginRight: 200,
+    width: 150
+  },
   formControl: {
-    margin: theme.spacing.unit * 3,
+    marginLeft: theme.spacing.unit
   },
   group: {
-    margin: `${theme.spacing.unit}px 0`,
-   },
+    marginLeft: theme.spacing.unit
   }
 });
 
@@ -42,9 +43,16 @@ class ShapeUI extends React.Component {
     rectangle_height: "",
   };
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
-    this.setState({ value: event.target.value });
+  handleChange = event => {
+    this.setState({
+      value: event.target.value,
+      answer: "",
+      circle_radius: "",
+      triangle_base_to_height: "",
+      triangle_base_length: "",
+      rectangle_width: "",
+      rectangle_height: ""
+    });
   };
 
   handleSubmit = () => {
@@ -76,7 +84,7 @@ class ShapeUI extends React.Component {
       form =
         <div>
           <form>
-            <TextField id="circle_radius" label="Radius" value={this.state.name} margin="normal" className={classes.textField} onChange={e => this.setState({ circle_radius: e.target.value })} />
+            <TextField id="circle_radius" label="Radius" value={this.state.circle_radius} margin="normal" className={classes.textField} onChange={e => this.setState({ circle_radius: e.target.value })} />
           </form>
         </div>
     }
@@ -84,8 +92,8 @@ class ShapeUI extends React.Component {
       form =
         <div>
           <form>
-            <TextField id="triangle_base_to_height" label="Base to height" value={this.state.name} margin="normal" className={classes.textField} onChange={e => this.setState({ triangle_base_to_height: e.target.value })} />
-            <TextField id="triangle_base_length" label="Base length" value={this.state.name} margin="normal" className={classes.textField} onChange={e => this.setState({ triangle_base_length: e.target.value })} />
+            <TextField id="triangle_base_to_height" label="Base to height" value={this.state.triangle_base_to_height} margin="normal" className={classes.textField} onChange={e => this.setState({ triangle_base_to_height: e.target.value })} />
+            <TextField id="triangle_base_length" label="Base length" value={this.state.triangle_base_length} margin="normal" className={classes.textField} onChange={e => this.setState({ triangle_base_length: e.target.value })} />
           </form>
         </div>
     }
@@ -93,24 +101,24 @@ class ShapeUI extends React.Component {
       form =
         <div>
           <form>
-            <TextField id="rectangle_height" label="Height" value={this.state.name} margin="normal" className={classes.textField} onChange={e => this.setState({ rectangle_height: e.target.value })} />
-            <TextField id="rectangle_width" label="Width" value={this.state.name} margin="normal" className={classes.textField} onChange={e => this.setState({ rectangle_width: e.target.value })} />
+            <TextField id="rectangle_height" label="Height" value={this.state.rectangle_height} margin="normal" className={classes.textField} onChange={e => this.setState({ rectangle_height: e.target.value })} />
+            <TextField id="rectangle_width" label="Width" value={this.state.rectangle_width} margin="normal" className={classes.textField} onChange={e => this.setState({ rectangle_width: e.target.value })} />
           </form>
         </div>
     }
 
     return (
       <div className={classes.container}>
-        <FormControl component="fieldset" required className={classes.formControl}>
+        <FormControl component="fieldset" className={classes.formControl}>
           <FormLabel component="legend">Choose shape to calculate area of</FormLabel>
           <RadioGroup
             name="shapes"
             className={classes.group}
             value={this.state.value}
           >
-            <FormControlLabel value="circle" control={<Radio />} label="Circle" onChange={this.handleChange('circle')}/>
-            <FormControlLabel value="triangle" control={<Radio />} label="Triangle" onChange={this.handleChange('triangle')}/>
-            <FormControlLabel value="rectangle" control={<Radio />} label="Rectangle" onChange={this.handleChange('rectangle')}/>
+            <FormControlLabel value="circle" control={<Radio />} label="Circle" onChange={this.handleChange} />
+            <FormControlLabel value="triangle" control={<Radio />} label="Triangle" onChange={this.handleChange} />
+            <FormControlLabel value="rectangle" control={<Radio />} label="Rectangle" onChange={this.handleChange} />
           </RadioGroup>
         </FormControl>
         {form}

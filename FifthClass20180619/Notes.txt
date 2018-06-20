@@ -19,4 +19,19 @@
 - Original need for JQuery was to bridge the gap between Microsoft's version of Javascript and Mozilla's
 - In jquery, to get an element from HTML:
     - [window.]document.getElementById(“foo”) is the same as $(“#foo”)
-- 
+- In jquery, $ is just a short-hand for the jquery object
+- ready() invoked when page is loaded whereas onload() invoked when everything on the page finishes loading
+- $(function(){alert('hi');}); automatically uses the ready function
+- Element Selector: $("hi")
+- ID Selector: $(“#walk”)
+- Class Selector: $(“.row”)
+- Add class selector: $(“#Anakin”).addClass(“CruzinTheDarkSide”);
+- Find intersection: $(".ClassA.ClassB") or $(".ClassA").filter(".ClassB")
+- filter() can be used to refine your jquery selection
+- Anything you do in CSS can be selected by jquery
+- Descendent Selector: $(“table td span.target”)
+    - searches table for things part of the target class
+- Direct Descendent Selector: $(“div#target > div.row”)
+- Attribute Selectors: $(“div[id=searchDiv]”)
+- Event argument must be in the first position if you want to use it
+- With jquery you can chain events to do "on mouse click and mouse leaves the button"

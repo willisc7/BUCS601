@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>onload vs ready</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: "http://zumatra.com/teach/colors.php",
+                success: function (data) {
+                    let h = "<ul>";
+                    data.forEach(element => {
+                        h += `<li>${element}</li>`;
+                    })
+                    h += "</ul>";
+                    $("body").append(h);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Test</h1>
+</body>
+
+</html>

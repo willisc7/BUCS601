@@ -1,0 +1,22 @@
+- AJAX - Asynchronous Javascript and XML
+    - most AJAX APIs just uses JSON and not XML
+    - describes the use of JS, CSS, DOM, and async HTTP
+    - really means "a webpage that doesn't require a reload"
+- XMLHttpRequest object (XHR) allows you to receive and process response without page reload
+    - core object known to all browsers
+    - jquery uses this object behind the scene
+- AJAX turned the browser into a thing that hosts applications not just content like with simple HTML and CSS
+- not just web development. Real coding with regression testing, TDD, etc.
+- OWASP Zed Proxy Attack tool is a good baseline test to see if your web app is vulnerable
+- AJAX is mostly for making requests to an external resource and loading them on your page
+- typically use jquery for AJAX calls
+    - React doesn't natively support AJAX
+- To get element out of XML object:
+    - var target = transport.responseXML.documentElement
+    - var books = target.getElementsByTagName(“book”);
+- To get element from JSON object:
+    - var json = transport.responseText.parseJSON();
+- Original need for JQuery was to bridge the gap between Microsoft's version of Javascript and Mozilla's
+- In jquery, to get an element from HTML:
+    - [window.]document.getElementById(“foo”) is the same as $(“#foo”)
+- 

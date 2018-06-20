@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>onload vs ready</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        $(() => {
+            console.log("ready fired");
+            /* fires when the DOM is ready */
+        });
+        function _onload() {
+            /* this is a global function because its not within a class or function */
+            console.log("onload fired");
+            /* fires when everything in body loads */
+        }
+    </script>
+</head>
+
+<body onload="_onload()">
+    <h1>Test</h1>
+</body>
+
+</html>

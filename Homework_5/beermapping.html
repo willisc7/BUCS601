@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Beer Mapping</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        let name_query = 'goose+island';
+
+        /* Get list of store IDs that carry Goose Island */
+        $(function () {
+            $.getJSON("http://beermapping.com/webservice/locquery/1deda442bc5b6e4c8dc406cf53c80d46/" + name_query + "&s=json",
+                function (data) {
+                    console.log(data);
+                    let list_over_50 = "<h1>Goose Island Locations with Rating Over 50</h1><ul>";
+                    let list_under_50 = "<h1>Goose Island Locations with Rating Under 50</h1><ul>";
+                    data.forEach(element => {
+                        if (element.overall > 50) {
+                            list_over_50 += `<li>${element.name} has a rating of ${element.overall}</li>`;
+                        }
+                        else {
+                            list_under_50 += `<li>${element.name} has a rating of ${element.overall}</li>`;
+                        }
+                    })
+                    list_over_50 += "</ul>";
+                    list_under_50 += "</ul>";
+                    $("body").append(list_over_50).append(list_under_50);
+                });
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

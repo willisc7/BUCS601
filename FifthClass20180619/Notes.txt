@@ -35,3 +35,6 @@
 - Attribute Selectors: $(“div[id=searchDiv]”)
 - Event argument must be in the first position if you want to use it
 - With jquery you can chain events to do "on mouse click and mouse leaves the button"
+- New way to handle events is to use the following:
+    - $(".button").on("click", (event) => {console.log("clicked)});
+    - you're adding the click event to the button

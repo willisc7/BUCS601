@@ -1,14 +1,20 @@
 import React from "react";
+import { GoogleApiWrapper } from 'google-maps-react'
+import GoogleApiComponent from "components/GoogleMaps/GoogleApiComponent.js";
 
-class HomePage extends React.Component {
+class Container extends React.Component {
   render() {
-
+    if (!this.props.loaded) {
+      return (
+        <div>Loading...</div>
+      )
+    }
     return (
-      <div>
-        Hi
-      </div>
-    );
+      <div>Map will go here</div>
+    )
   }
 }
 
-export default HomePage;
+export default GoogleApiComponent({
+  apiKey: 'AIzaSyCqT0NT-5-nGdM3h6JDRqsCBq1ya_QuVJ0'
+})(Container)

@@ -2,7 +2,7 @@ import Components from "views/Components/Components.jsx";
 import LandingPage from "views/LandingPage/LandingPage.jsx";
 import ProfilePage from "views/ProfilePage/ProfilePage.jsx";
 import LoginPage from "views/LoginPage/LoginPage.jsx";
-import HomePage from "views/HomePage/HomePage.js";
+import HomePage from "views/HomePage/HomePage.jsx";
 
 var indexRoutes = [
   { path: "/home-page", name: "HomePage", component: HomePage },

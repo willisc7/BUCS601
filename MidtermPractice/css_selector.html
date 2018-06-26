@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+     Create a CSS selector that will match on values of the "name" attribute that 
+     begin with the word, "item". For example, "item", "item-23", and "item_323"
+ -->
+
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <style>
+        [name*="item"] {
+            color: red;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div name=item>Foo</div>
+    <div name=item-23>Foo</div>
+    <div name=item_323>Foo</div>
+</body>
+
+</html>

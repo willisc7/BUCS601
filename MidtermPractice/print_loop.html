@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+    Fill in the blanks below to create a loop that repeats the message, 
+    "I will work on my final project this weekend", ten times
+ -->
+
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="target"></div>
+    <script>
+        for (i = 0; i < 10; i++) {
+            document.getElementById("target").innerHTML += `<div>${i+1} - I will work on my final project this weekend</div>`;
+        }
+    </script>
+</body>
+
+</html>

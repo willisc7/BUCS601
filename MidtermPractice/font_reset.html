@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+     Show how you can change the presentation of your page when a user attempts to print, 
+     by making the font sizes xx-small, then have it reset back to its original state 
+     (font-size of medium) after printing.
+ -->
+
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <style>
+        #text {
+            font-size: medium;
+        }
+    </style>
+    <script>
+        let sleep;
+
+        resetFontSize = () => {
+            $("#text").css("font-size", "medium");
+        }
+
+        changeFontSize = () => {
+            $("#text").css("font-size", "xx-small");
+            sleep = setTimeout(resetFontSize, 1000);
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id=text>Foo</div>
+    <button onclick="changeFontSize()">Click Me</button>
+</body>
+
+</html>

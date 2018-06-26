@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+     Create a small HTML page that uses JavaScript to find the count of 
+     div elements. Make sure you create a test page with at least 3 divs to see it working.
+ -->
+
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        $(() => {
+            $("body").append("There are " + $("div").length + " divs on this page");
+        });
+    </script>
+</head>
+
+<body>
+    <div>Foo</div>
+    <div>Foo</div>
+    <div>Foo</div>
+    <div>Foo</div>
+</body>
+
+</html>

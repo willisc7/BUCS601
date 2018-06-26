@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+     Create a CSS selector that will match on values of the "name" attribute that 
+     begin with the word, "item". For example, "item", "item-23", and "item_323"
+ -->
+
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+
+    <style>
+        body{
+            margin: 0;
+        }
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            align-items: left;
+            padding-right: 150px;
+        }
+        #special {
+            padding-right: 0;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>cell 1</td>
+            <td>cell 2</td>
+            <td>cell 3</td>
+        </tr>
+        <tr>
+            <td>cell 4</td>
+            <td rowspan="2" id="special" align="center">cell 5</td>
+            <td>cell 6</td>
+        </tr>
+        <tr>
+            <td>cell 7</td>
+            <td>cell 8</td>
+        </tr>
+        <tr>
+            <td>cell 9</td>
+            <td>cell 10</td>
+            <td>cell 11</td>
+        </tr>
+        <tr>
+            <td>cell 12</td>
+            <td colspan="2" id="special" align="center">cell 13</td>
+        </tr>
+        <tr>
+            <td>cell 14</td>
+            <td>cell 15</td>
+            <td>cell 16</td>
+        </tr>
+        <tr>
+            <td colspan="2" id="special" align="center">cell 17</td>
+            <td>cell 18</td>
+        </tr>
+    </table>
+</body>
+
+</html>

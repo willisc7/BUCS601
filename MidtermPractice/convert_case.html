@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+    Show how you properly cancel a HTML form from being POST'ed, 
+    Take the following, mixed-case, words and show how you would capitalize each word.
+    "Roses are RED."
+    "Violets ARE blue."
+    "If I am caught cheating on this TeST,"
+    "I WILL be in VERY BIG trouble."
+    This is the expected output:
+    "Roses Are Red."
+    "Violets Are Blue."
+    "If I Am Caught Cheating On This Test."
+    "I Will Be In Very Big Trouble."
+ -->
+
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        $(()=>{
+            let text = "Roses are RED. <br> Violets ARE blue. <br> If I am caught cheating on this TeST, <br> I WILL be in VERY BIG trouble.";
+            text = toTitleCase(text);
+            $("body").append(text);
+        });
+        toTitleCase = (str) => {
+            return str.replace(/\w\S*/g, function(txt){
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+        }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

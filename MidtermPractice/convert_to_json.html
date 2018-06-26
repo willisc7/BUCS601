@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+    Take the following information, and convert to be in JSON format:
+    color=green&is_valid=true&idValues=1,2,3,4
+ -->
+
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        $(() => {
+            let obj = {
+                "color": "green",
+                "is_valid": "true",
+                "idValues": "1,2,3,4"
+            };
+            let myJSON = JSON.stringify(obj);
+            $("body").append(myJSON);
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

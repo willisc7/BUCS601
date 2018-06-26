@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+    Show how you properly cancel a HTML form from being POST'ed, 
+    when the user clicks a submit button in that form.
+ -->
+
+<head>
+    <title>Title</title>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        <input type="text" name="firstname" value="Foo">
+        <br>
+        <br>
+        <input type="text" name="lastname" value="Also Foo">
+        <br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

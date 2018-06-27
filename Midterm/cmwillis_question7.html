@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("div").each(function (index) {
+                    if ($(this).attr("name") == undefined) {
+                        $("body").append("element had no value indicated for its name");
+                    }
+                    else {
+                        $("body").append($(this).attr("name") + " has a name");
+                    }
+
+                    if ($(this).attr("id") == undefined) {
+                        $("body").append(", element did not have an id value<br>");
+                    }
+                    else {
+                        $("body").append(" , " + $(this).attr("id") + " has an id<br>");
+                    }
+                    
+                });
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <div name="div1"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div name="div5"></div>
+    <div></div>
+    <div></div>
+    <div name="div8" id="div8"></div>
+    <div></div>
+    <div id="div10"></div>
+    <button>Click</button>
+    <br>
+</body>
+
+</html>

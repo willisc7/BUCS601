@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 600px;
+            height: 300px;
+        }
+
+        .header {
+            font-size: 24px;
+            width: 600px;
+            height: 60px;
+        }
+
+        .header_sub {
+            font-size: 12px;
+            width: 600px;
+            height: 20px;
+        }
+
+        .form_left {
+            flex-flow: row wrap;
+            width: 120px;
+            height: 200px;
+            text-align: right;
+        }
+
+        .form_right {
+            flex-flow: row wrap;
+            width: 250px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="http://www.clker.com/cliparts/b/6/1/0/124223379411527084631_Train_(1967-1979).svg.med.png" width="50" height="50"> Setup your account
+        </div>
+        <div class="header_sub">
+            Make sure to use a valid email address, you'll need to verify it before you can send any campaigns.
+        </div>
+        <div class="form_left">
+            <label for="name">Name</label>
+            <br>
+            <label for="email">Email Address</label>
+            <br>
+            <label for="username">Username</label>
+            <br>
+            <label for="password">Password</label>
+            <br>
+            <label for="company">Company</label>
+            <br>
+            <label for="country">Country</label>
+            <br>
+            <label for="timezone">Timezone</label>
+        </div>
+        <div class="form_right">
+            <input id="name">
+            <input id="email">
+            <input id="username">
+            <input id="password" type="password">
+            <input id="company">
+            <select id="country">
+                <option value="US">United States of America</option>
+            </select>
+            <select id="timezone">
+                <option timeZoneId="1" gmtAdjustment="GMT-06:00" useDaylightTime="0" value="-6">(GMT-06:00) Central America</option>
+            </select>
+        </div>
+    </div>
+</body>
+
+</html>

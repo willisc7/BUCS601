@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $('#loading').show();
+        $.ajax({
+            url: "https://www.google.com",
+            cache: false,
+            success: function () {
+                $("body").append("<div>Loaded.</div>");
+                $('#loading').hide();
+            },
+            complete: function () {
+                $('#loading').hide();
+            },
+            error: function () {
+                $('#loading').hide();
+                $("body").append("<div>We had a data failure.</div>");
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div id='loading'>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif">
+    </div>
+</body>
+
+</html>

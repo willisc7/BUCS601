@@ -9,7 +9,17 @@ import GridItem from "components/Grid/GridItem.jsx";
 
 import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 
-import GoogleApiComponent from "components/GoogleMaps/GoogleApiComponent.js";
+// import Google Map components
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+
+const MyMapComponent = withScriptjs(withGoogleMap((props) =>
+  <GoogleMap
+    defaultZoom={8}
+    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+  >
+    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+  </GoogleMap>
+))
 
 class MapSection extends React.Component {
   render() {
@@ -24,7 +34,13 @@ class MapSection extends React.Component {
         </GridContainer>
         <GridContainer justify="center">
           <GridItem xs={12} sm={12} md={8}>
-            <h3 className={classes.title}>{"<Map will go here>"}</h3>
+            <MyMapComponent
+              isMarkerShown
+              googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqT0NT-5-nGdM3h6JDRqsCBq1ya_QuVJ0&v=3.exp&libraries=geometry,drawing,places"
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={{ height: `400px` }} />}
+              mapElement={<div style={{ height: `100%` }} />}
+            />
           </GridItem>
         </GridContainer>
       </div>
@@ -32,6 +48,4 @@ class MapSection extends React.Component {
   }
 }
 
-export default withStyles(productStyle)(GoogleApiComponent({
-  apiKey: 'AIzaSyCqT0NT-5-nGdM3h6JDRqsCBq1ya_QuVJ0'
-})(MapSection));
+export default withStyles(productStyle)(MapSection);

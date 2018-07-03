@@ -23,7 +23,7 @@ const { SearchBox } = require("react-google-maps/lib/components/places/SearchBox
 
 const MapWithASearchBox = compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAdz_DA_uiQDeYmYfVJMWW7YH8phMC0UIA&v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAdz_DA_uiQDeYmYfVJMWW7YH8phMC0UIA&v=3&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
@@ -52,7 +52,6 @@ const MapWithASearchBox = compose(
         },
         onPlacesChanged: () => {
           const places = refs.searchBox.getPlaces();
-          //const bounds = new window.google.maps.LatLngBounds();
           const bounds = new google.maps.LatLngBounds();
 
           places.forEach(place => {
@@ -88,8 +87,7 @@ const MapWithASearchBox = compose(
     <SearchBox
       ref={props.onSearchBoxMounted}
       bounds={props.bounds}
-      //controlPosition={window.google.maps.ControlPosition.LEFT_TOP}
-      controlPosition={google.maps.ControlPosition.LEFT_TOP}
+      controlPosition={google.maps.ControlPosition.TOP_LEFT}
       onPlacesChanged={props.onPlacesChanged}
     >
       <input

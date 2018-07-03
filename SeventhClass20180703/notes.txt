@@ -14,4 +14,13 @@
     rendered on that page
 - Every section on a page that does a function is typically its own component that calls other components
 - modules are loosely-coupled components and need transpiler to get it to actually work in modern browsers
+- Component:
+    - import all classes that are needed
+    - @component = decorator that defines something as a component
+    - class definition
+- Create React component by extending react.component
+- @component decorator explains the component
+    - selector = how it will be called
+    - templateUrl = the HTML
+    - styleUrls = the CSS for the HTML
 - 

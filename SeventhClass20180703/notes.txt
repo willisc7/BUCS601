@@ -1,0 +1,17 @@
+- "ng new <PROJECT_NAME> --routing"
+    - creates new project (similar to ReactJS) with a basic routing file that defines URL pathing
+- "ng serve"
+    - starts the angular app
+    - uses ExpressJS web server
+- ExpressJS is very bare bones and you need to add to it as you need (not as clunky as Apache or IIS)
+- "ng generate component <COMPONENT_NAME>"
+    - creates a bare bones component
+- Components - self-aware, self-contained classes that render themselves
+    - knows what it can do, what it needs, can contain other components, etc.
+    - Angular components at a high-level are similar to React components
+ - Service - specialized class that handles a specific function (e.g. fetching data)
+ - index.js is THE ONE FILE that the user loads and because of SPA everything is just dynamically 
+    rendered on that page
+- Every section on a page that does a function is typically its own component that calls other components
+- modules are loosely-coupled components and need transpiler to get it to actually work in modern browsers
+- 

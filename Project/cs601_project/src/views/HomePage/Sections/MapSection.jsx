@@ -9,6 +9,8 @@ import GridItem from "components/Grid/GridItem.jsx";
 
 import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 
+/*global google*/
+
 const _ = require("lodash");
 const { compose, withProps, lifecycle } = require("recompose");
 const {
@@ -33,7 +35,7 @@ const MapWithASearchBox = compose(
       this.setState({
         bounds: null,
         center: {
-          lat: 41.9, lng: -87.624
+          lat: 42.3601, lng: -71.0589
         },
         markers: [],
         onMapMounted: ref => {
@@ -50,7 +52,8 @@ const MapWithASearchBox = compose(
         },
         onPlacesChanged: () => {
           const places = refs.searchBox.getPlaces();
-          const bounds = new window.google.maps.LatLngBounds();
+          //const bounds = new window.google.maps.LatLngBounds();
+          const bounds = new google.maps.LatLngBounds();
 
           places.forEach(place => {
             if (place.geometry.viewport) {
@@ -85,12 +88,13 @@ const MapWithASearchBox = compose(
     <SearchBox
       ref={props.onSearchBoxMounted}
       bounds={props.bounds}
-      controlPosition={window.google.maps.ControlPosition.LEFT_TOP}
+      //controlPosition={window.google.maps.ControlPosition.LEFT_TOP}
+      controlPosition={google.maps.ControlPosition.LEFT_TOP}
       onPlacesChanged={props.onPlacesChanged}
     >
       <input
         type="text"
-        placeholder="Customized your placeholder"
+        placeholder="Search"
         style={{
           boxSizing: `border-box`,
           border: `1px solid transparent`,

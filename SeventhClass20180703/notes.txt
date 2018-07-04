@@ -23,4 +23,9 @@
     - selector = how it will be called
     - templateUrl = the HTML
     - styleUrls = the CSS for the HTML
-- 
+- Directives alter the appearance or behavior of DOM elements.
+- Setup piping in the constructor and then use @ to decorate it
+- Constructor wires up the state and takes in the props
+- Angular is a framework whereas React is a little harder to build
+    without "create-react-app"
+- When you want to create state you inject it in the constructor

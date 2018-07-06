@@ -9,17 +9,14 @@ import GridItem from "components/Grid/GridItem.jsx";
 
 import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 
+// react-google-maps components
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import SearchBox from "react-google-maps/lib/components/places/SearchBox";
+import { compose, withProps, lifecycle } from "recompose";
+
 /*global google*/
 
 const _ = require("lodash");
-const { compose, withProps, lifecycle } = require("recompose");
-const {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  Marker,
-} = require("react-google-maps");
-const { SearchBox } = require("react-google-maps/lib/components/places/SearchBox");
 
 const MapWithASearchBox = compose(
   withProps({
@@ -40,12 +37,6 @@ const MapWithASearchBox = compose(
         markers: [],
         onMapMounted: ref => {
           refs.map = ref;
-        },
-        onBoundsChanged: () => {
-          this.setState({
-            bounds: refs.map.getBounds(),
-            center: refs.map.getCenter(),
-          })
         },
         onSearchBoxMounted: ref => {
           refs.searchBox = ref;
@@ -82,7 +73,7 @@ const MapWithASearchBox = compose(
     ref={props.onMapMounted}
     defaultZoom={15}
     center={props.center}
-    onBoundsChanged={props.onBoundsChanged}
+    onBoundsChanged={props.onIdle}
   >
     <SearchBox
       ref={props.onSearchBoxMounted}

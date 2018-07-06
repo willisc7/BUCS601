@@ -19,14 +19,14 @@ import landingPageStyle from "assets/jss/material-kit-react/views/landingPage.js
 
 // Sections for this page
 import SectionCarousel from "./Sections/SectionCarousel.jsx";
-import MapSection from "./Sections/MapSection.jsx";
+import SectionMap from "./Sections/SectionMap.jsx";
 
 const dashboardRoutes = [];
 
 class LandingPage extends React.Component {
   render() {
     const { classes, ...rest } = this.props;
-    
+
     return (
       <div>
         <Header
@@ -47,20 +47,10 @@ class LandingPage extends React.Component {
               <GridItem xs={12} sm={12} md={6}>
                 <h1 className={classes.title}>Map the food you love.</h1>
                 <h4>
-                  Everyone loves food. It brings us together, and each 
+                  Everyone loves food. It brings us together, and each
                   delicious dish has a story. Keep track of the pictures
                   you've taken of the food you love all in one place.
                 </h4>
-                <br />
-                <Button
-                  color="danger"
-                  size="lg"
-                  href=""
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fas fa-play" />Get Started
-                </Button>
               </GridItem>
               <GridItem xs={12} sm={12} md={6}>
                 <SectionCarousel />
@@ -70,7 +60,7 @@ class LandingPage extends React.Component {
         </Parallax>
         <div className={classNames(classes.main, classes.mainRaised)}>
           <div className={classes.container}>
-            <MapSection />
+            <SectionMap />
           </div>
         </div>
         <Footer />

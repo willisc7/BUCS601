@@ -30,7 +30,7 @@ class SectionCarousel extends React.Component {
       <div className={classes.section}>
         <div className={classes.container}>
           <GridContainer>
-            <GridItem xs={12} sm={12} md={8} className={classes.marginAuto}>
+            <GridItem>
               <Card carousel>
                 <Carousel {...settings}>
                   <div>
@@ -41,7 +41,7 @@ class SectionCarousel extends React.Component {
                     />
                     <div className="slick-caption">
                       <h4>
-                        <LocationOn className="slick-icons" />Tori Paitan Ramen, 
+                        <LocationOn className="slick-icons"/>Tori Paitan Ramen, 
                         Mensho Tokyo, San Francisco, CA
                       </h4>
                     </div>

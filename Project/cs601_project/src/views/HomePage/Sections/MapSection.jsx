@@ -10,15 +10,22 @@ import GridItem from "components/Grid/GridItem.jsx";
 import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 
 // react-google-maps components
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
 import SearchBox from "react-google-maps/lib/components/places/SearchBox";
-import { compose, withProps, lifecycle } from "recompose";
+import { compose, withProps, lifecycle, withStateHandlers, withState } from "recompose";
 
 /*global google*/
 
 const _ = require("lodash");
 
 const MapWithASearchBox = compose(
+  withStateHandlers(() => ({
+    isOpen: false,
+  }), {
+    onToggleOpen: ({ isOpen }) => () => ({
+      isOpen: !isOpen,
+    })
+  }),
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAdz_DA_uiQDeYmYfVJMWW7YH8phMC0UIA&v=3&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
@@ -99,12 +106,19 @@ const MapWithASearchBox = compose(
         }}
       />
     </SearchBox>
+    <Marker
+      position={{ lat: 42.3601, lng: -71.0589 }}
+      onClick={props.onToggleOpen}
+    >
+      {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
+        {<img src="https://pbs.twimg.com/media/DYGA5cFUMAc1zfY.jpg" />}
+      </InfoWindow>}
+    </Marker>
     {props.markers.map((marker, index) =>
       <Marker key={index} position={marker.position} />
     )}
   </GoogleMap>
 );
-
 
 class MapSection extends React.Component {
   render() {

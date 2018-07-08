@@ -14,7 +14,6 @@ import { compose, withProps, lifecycle, withStateHandlers } from "recompose";
 /*global google*/
 
 const _ = require("lodash");
-let restaurant_locations = [];
 
 const MapWithASearchBox = compose(
   withStateHandlers(() => ({
@@ -32,7 +31,12 @@ const MapWithASearchBox = compose(
   }),
   lifecycle({
     componentWillMount() {
-      const refs = {}
+      const refs = {};
+
+      // keep track of all restaurants the user has added as well as the currently selected restaurant
+      let restaurant_locations = [];
+      let current_restaurant = [];
+      let restaurant_markers = [];
 
       this.setState({
         bounds: null,
@@ -56,6 +60,10 @@ const MapWithASearchBox = compose(
             } else {
               bounds.extend(place.geometry.location)
             }
+
+            //when user searches for a place, insert details of the currently selected 
+            //restaurant into current_restaurant
+            current_restaurant = [place.name, place.geometry.location.lat(), place.geometry.location.lng()];
           });
           const nextMarkers = places.map(place => ({
             position: place.geometry.location,
@@ -64,31 +72,27 @@ const MapWithASearchBox = compose(
 
           this.setState({
             center: nextCenter,
-            markers: nextMarkers,
-          });
-
-          // keep track of restuarant locations
-          restaurant_locations.push(this.state.center);
-          restaurant_locations.forEach(restaurant => {
-            console.log(restaurant.toString());
-/*             var myLatlng = new google.maps.LatLng(-25.363882, 131.044922);
-            var mapOptions = {
-              zoom: 4,
-              center: myLatlng
-            }
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-            var marker = new google.maps.Marker({
-              position: myLatlng,
-              title: "Hello World!"
-            });
-
-            // To add the marker to the map, call setMap();
-            marker.setMap(map); */
+            markers: nextMarkers
           });
         },
+        handleAddRestaurantClick: () => {
+          //store the restaurant the user added in restaurant_locations
+          restaurant_locations.push(current_restaurant);
+          restaurant_markers.push([current_restaurant[1],current_restaurant[2]]);
+
+          // for debugging purposes
+          console.clear();
+          console.log("Current values in restaurant_locations:");
+          restaurant_locations.forEach(restaurant => {
+            console.log(restaurant);
+          });
+          console.log("Current values in restaurant_markers:");
+          restaurant_markers.forEach(restaurant => {
+            console.log(restaurant);
+          });
+        }
       })
-    },
+    }
   }),
   withScriptjs,
   withGoogleMap
@@ -134,7 +138,7 @@ const MapWithASearchBox = compose(
     {props.markers.map((marker, index) =>
       <Marker key={index} position={marker.position} />
     )}
-    <Button color="info">Add</Button>
+    <Button color="info" onClick={props.handleAddRestaurantClick}>Add</Button>
   </GoogleMap>
 );
 

@@ -36,7 +36,6 @@ const MapWithASearchBox = compose(
       // keep track of all restaurants the user has added as well as the currently selected restaurant
       let restaurant_locations = [];
       let current_restaurant = [];
-      let restaurant_markers = [];
 
       this.setState({
         bounds: null,
@@ -78,16 +77,11 @@ const MapWithASearchBox = compose(
         handleAddRestaurantClick: () => {
           //store the restaurant the user added in restaurant_locations
           restaurant_locations.push(current_restaurant);
-          restaurant_markers.push([current_restaurant[1],current_restaurant[2]]);
 
           // for debugging purposes
           console.clear();
           console.log("Current values in restaurant_locations:");
           restaurant_locations.forEach(restaurant => {
-            console.log(restaurant);
-          });
-          console.log("Current values in restaurant_markers:");
-          restaurant_markers.forEach(restaurant => {
             console.log(restaurant);
           });
         }

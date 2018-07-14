@@ -18,6 +18,7 @@ export class TranslateComponent implements OnInit {
     ["fake news", "поддельные новости"],
     ["vodka", "водка"]
   ];
+  dest_text = "";
 
   constructor(private translateService: TranslateService) {
   }
@@ -31,14 +32,11 @@ export class TranslateComponent implements OnInit {
       for (var j = 0; j < row.length; j++) {
         if (j % 2 == 0) {
           if (row[j] == source_text) {
+            this.dest_text = row[j + 1];
             console.log(row[j + 1]);
           }
         }
       }
     }
-    /*     console.log(source_text);
-        this.searchTerms.next(source_text);
-        let response = this.translateService.translateText(source_text).subscribe();
-        console.log(response); */
   }
 }

@@ -13,7 +13,7 @@ import { compose, withProps, lifecycle, withStateHandlers } from "recompose";
 
 /*global google*/
 
-class Map3 extends React.Component {
+class Map extends React.Component {
 
     state = { restaurant_markers: [] }
 
@@ -188,4 +188,4 @@ class RestaurantMarker extends React.Component {
 
 }
 
-export default withStyles(productStyle)(Map3);
+export default withStyles(productStyle)(Map);

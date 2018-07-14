@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '../translate.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-translate',
@@ -9,15 +10,35 @@ import { TranslateService } from '../translate.service';
 
 export class TranslateComponent implements OnInit {
 
-  constructor(private translateService: TranslateService){
+  private searchTerms = new Subject<string>();
+  private en_to_rus: string[][] = [
+    ["hello", "Здравствуйте"],
+    ["potato", "картошка"],
+    ["fire", "Огонь"],
+    ["fake news", "поддельные новости"],
+    ["vodka", "водка"]
+  ];
+
+  constructor(private translateService: TranslateService) {
   }
 
   ngOnInit() {
-    this.translate("hello");
   }
 
   translate(source_text: string): void {
-    let response = this.translateService.translateText(source_text).subscribe();
-    console.log(response);
+    for (let i = 0; i < this.en_to_rus.length; i++) {
+      const row = this.en_to_rus[i];
+      for (var j = 0; j < row.length; j++) {
+        if (j % 2 == 0) {
+          if (row[j] == source_text) {
+            console.log(row[j + 1]);
+          }
+        }
+      }
+    }
+    /*     console.log(source_text);
+        this.searchTerms.next(source_text);
+        let response = this.translateService.translateText(source_text).subscribe();
+        console.log(response); */
   }
 }

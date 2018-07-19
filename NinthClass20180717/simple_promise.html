@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function doTheThing(){
+            $("button").on("click", function(){
+                new Promise(function(resolve, reject) {
+                    setTimeout(function() { resolve("timeout completed!"); }, 3000);
+                }).then(function(result) {
+                    console.log(result);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <button class="button">Click Me!</button>
+</body>
+</html>

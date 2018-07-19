@@ -1,0 +1,50 @@
+
+<!doctype html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  
+        <style>
+            #loading {
+                 position: absolute; width: 100%; height: 100%; background: url('https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif') no-repeat center center;
+            }
+            #error {
+                text-align: center;
+            }           
+        </style>
+    </head>
+    <body>
+        <div id="loading"></div>
+        <div id="error"></div>
+    </body>
+    <script>
+        
+        var promise = new Promise(function(resolve, reject) {
+        // do a thing, possibly async, thenâ€¦
+            $.ajax({ 
+                    url: "http://zumatra.com/teach/colors.php",
+                    success: function(data) {
+                        console.log(data);
+                        resolve("Success!");
+                    },
+                    failure: function(){
+                        reject(Error("Failure"));
+                    }
+                    
+            }); 
+        });
+        
+        promise.then(function(result) {
+            console.log(result); // "Success!"
+            //hide spinner
+            let x = document.getElementById("loading");
+            x.style.display = "none";
+        }, function(err) {
+            console.log(err); // "Failure"
+            //show div with error message
+            document.getElementById("error").innerHTML = "Data Failure";
+            //hide spinner
+            let x = document.getElementById("loading");
+            x.style.display = "none";
+        });
+    </script>
+</html>

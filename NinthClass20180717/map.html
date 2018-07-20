@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        let map = new Map();
+        map.set("toString", "value1");
+        map.get("toString");
+        console.log(String(map));
+
+        let key1 = {};
+        let key2 = {};
+        let m = new Map();
+        m.set(key1, "v1");
+        m.set(key2, "v2");
+        console.log(m.get(key1));
+        console.log(m.get(key2));
+
+        let set = new Set();
+        set.add("value1");
+        console.log(set.size);
+        set.add("value1"); //wont do anything because set can only contain one unique entry
+        console.log(set.size);
+
+        let array = [3, 5, 2, 2, 5, 5];
+        console.log(array); // [3, 5, 2, 2, 5, 5]
+        let unique = [...new Set(array)]; 
+        //'...' = rest operator and means take whatever is inside the array and add this to it
+        console.log(unique); // [3, 5, 2]
+        for (let x of unique){
+            console.log(x);
+        }
+
+        let wm1 = new WeakMap(),
+            wm2 = new WeakMap(),
+            wm3 = new WeakMap();
+        
+        let obj1 = {},
+            obj2 = function() {},
+            obj3 = window;
+        
+        wm1.set(obj1, 37);
+        wm1.set(obj2, 'azerty');
+        wm2.set(obj1, obj2);
+        wm2.set(obj3, undefined);
+        wm2.set(wm1,wm2);
+
+        console.log(wm1.get(obj2)); //'azerty'
+        console.log(wm2.get(obj2)); //undefined because no key for obj2 on wm2
+        console.log(wm2.get(obj3)); //undefined because that is the set value
+        console.log(wm1.has(obj2)); //true
+        console.log(wm2.has(obj2)); //false
+        /* Notes:
+            - keys can be object literals
+            - map.size returns how many things are in the map
+            - map.clear() will get rid of things in map
+            - when something is not used anymore garbage collector
+              in JS gets rid of it
+            - in Java, when object has no more pointers to it in memory
+              when garbage collector job runs it will get rid of that
+              object
+            - WeakMap prevents keys in map from being garbage collected
+            - WeakMap methods = get, set, has, delete
+            - WeakSet exists as well
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

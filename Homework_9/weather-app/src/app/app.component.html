@@ -1,3 +1,6 @@
 <h2>Enter Zip Code for 5-day Forecast:</h2>
 <input #zipcode/>
 <button (click)="getWeather(zipcode.value); zipcode.value=''">Enter</button>
+<div>
+    {{forecast}}
+</div>

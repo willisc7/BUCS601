@@ -8,16 +8,17 @@ import { WeatherApiService } from './services/weather-api.service';
 })
 export class AppComponent {
   title = 'app';
-  forecast = '';
+  json = '';
 
-  constructor(private weatherAPIService: WeatherApiService){ }
+  constructor(private weatherAPIService: WeatherApiService) { }
 
-/*   getHeroes(): void {
-    this.heroService.getHeroes()
-    .subscribe(heroes => this.heroes = heroes);
-  } */
+  getWeather(zipcode: string): void {
 
-/*   getWeather(zipcode: string): void{
-    this.weatherAPIService.getWeather(zipcode).subscribe(forecast);
-  } */
+    // store response in json variable
+    this.weatherAPIService.getWeather(zipcode)
+      .subscribe(response => {
+        this.json = JSON.stringify(response);
+        console.log(response);
+      })
+  }
 }

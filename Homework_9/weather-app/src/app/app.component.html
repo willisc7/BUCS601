@@ -2,5 +2,10 @@
 <input #zipcode/>
 <button (click)="getWeather(zipcode.value); zipcode.value=''">Enter</button>
 <div>
-    {{json}}
+    <h3>Weather for the next 5 days</h3>
+    <ul>
+        <li *ngFor="let day of fiveDayWeather">
+            {{ day }}
+        </li>
+    </ul>
 </div>

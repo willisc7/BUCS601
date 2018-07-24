@@ -8,7 +8,7 @@ import { WeatherApiService } from './services/weather-api.service';
 })
 export class AppComponent {
   title = 'app';
-  json = '';
+  fiveDayWeather = [];
 
   constructor(private weatherAPIService: WeatherApiService) { }
 
@@ -17,8 +17,10 @@ export class AppComponent {
     // store response in json variable
     this.weatherAPIService.getWeather(zipcode)
       .subscribe(response => {
-        this.json = JSON.stringify(response);
         console.log(response);
+        for (let i = 0; i < 5; i++) {
+          this.fiveDayWeather.push(response.list[i].main.temp);
+        }
       })
   }
 }

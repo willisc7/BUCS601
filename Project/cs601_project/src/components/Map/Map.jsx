@@ -38,6 +38,26 @@ class Map extends React.Component {
                 componentWillMount() {
                     const refs = {};
 
+                    let restaurant_markers = []
+
+                    this.setState({
+
+                        handleAddRestaurantClick: () => {
+                            //store the restaurant the user added in restaurant_locations
+                            restaurant_markers.push(this.state.current_restaurant);
+    
+                            // for debugging purposes
+                            console.clear();
+                            console.log("Current values in restaurant_locations:");
+                            restaurant_markers.forEach(restaurant => {
+                                console.log(restaurant);
+                            });
+                        }
+
+                    })
+                    
+                    this.setState({ restaurant_markers })
+
                     this.setState({
                         bounds: null,
                         center: {
@@ -81,28 +101,6 @@ class Map extends React.Component {
                             });
                         }
                     })
-                },
-                componentDidMount() {
-
-                    let restaurant_markers = []
-
-                    this.setState({
-
-                        handleAddRestaurantClick: () => {
-                            //store the restaurant the user added in restaurant_locations
-                            restaurant_markers.push(this.state.current_restaurant);
-    
-                            // for debugging purposes
-                            console.clear();
-                            console.log("Current values in restaurant_locations:");
-                            restaurant_markers.forEach(restaurant => {
-                                console.log(restaurant);
-                            });
-                        }
-
-                    })
-                    
-                    this.setState({ restaurant_markers })
                 }
             }),
             withScriptjs,

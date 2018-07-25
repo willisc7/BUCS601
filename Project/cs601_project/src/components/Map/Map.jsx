@@ -47,7 +47,7 @@ class Map extends React.Component {
                         },
                         markers: [],
                         restaurant_markers,
-                        current_restaurant: "",
+                        current_place: null,
                         onMapMounted: ref => {
                             refs.map = ref;
                         },
@@ -64,15 +64,8 @@ class Map extends React.Component {
                                 } else {
                                     bounds.extend(place.geometry.location)
                                 }
-
-                                this.setState({
-                                    current_restaurant: {
-                                        'name': place.name,
-                                        'longitude': place.geometry.location.lng(),
-                                        'latitude': place.geometry.location.lat()
-                                    }
-                                })
                             });
+
                             const nextMarkers = places.map(place => ({
                                 position: place.geometry.location,
                             }));
@@ -80,12 +73,19 @@ class Map extends React.Component {
 
                             this.setState({
                                 center: nextCenter,
-                                markers: nextMarkers
+                                markers: nextMarkers,
+                                current_place: places[0]
                             });
                         },
                         handleAddRestaurantClick: () => {
+                             let current_restaurant = {
+                                'name': this.state.current_place.name,
+                                'longitude': this.state.current_place.geometry.location.lng(),
+                                'latitude': this.state.current_place.geometry.location.lat()
+                            }
+
                             //store the restaurant the user added in restaurant_locations
-                            restaurant_markers.push(this.state.current_restaurant);
+                            restaurant_markers.push(current_restaurant);
 
                             // for debugging purposes
                             console.log("Current values in restaurant_locations:");

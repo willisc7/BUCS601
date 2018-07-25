@@ -79,6 +79,7 @@ class Map extends React.Component {
                         },
                         handleAddRestaurantClick: () => {
                              let current_restaurant = {
+                                'id': this.state.current_place.id,
                                 'name': this.state.current_place.name,
                                 'longitude': this.state.current_place.geometry.location.lng(),
                                 'latitude': this.state.current_place.geometry.location.lat()
@@ -138,7 +139,7 @@ class Map extends React.Component {
 
                 {/* Place all markers stored in restaurant_markers */}
                 {props.restaurant_markers.map(props =>
-                    <RestaurantMarker key={props.name} {...props}>
+                    <RestaurantMarker key={props.id} {...props}>
                     </RestaurantMarker>
                 )}
 
@@ -181,10 +182,10 @@ class RestaurantMarker extends React.Component {
 
     render() {
 
-        const { name, latitude, longitude } = this.props
+        const { id, name, latitude, longitude } = this.props
 
         return (
-            <Marker key={name} position={{ lat: latitude, lng: longitude }}>
+            <Marker key={id} name={name} position={{ lat: latitude, lng: longitude }}>
                 {this.state.isOpen && <InfoWindow onCloseClick={this.state.onToggleOpen}>
                     <img src="https://pbs.twimg.com/media/DYGA5cFUMAc1zfY.jpg" alt="" />
                 </InfoWindow>}

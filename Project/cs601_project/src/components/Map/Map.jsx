@@ -170,7 +170,7 @@ class Map extends React.Component {
     }
 }
 
-class RestaurantMarker extends React.Component {
+/* class RestaurantMarker extends React.Component {
 
     state = {
         isOpen: false
@@ -192,6 +192,27 @@ class RestaurantMarker extends React.Component {
             </Marker>
         )
     }
-}
+} */
+
+class RestaurantMarker extends React.Component {
+
+    state = {open: false}
+
+    render() {
+
+      const { id, name, latitude, longitude } = this.props
+  
+      // Return Restaurant Marker Component.
+      return (
+        <Marker key={id} position={{ lat: latitude, lng: longitude }}>
+          {this.state.open && (
+            <InfoWindow onClick={() => this.setState(state => ({open: !state.open}))}> {name} </InfoWindow>
+          )}
+        </Marker>
+      )
+  
+    }
+  
+  }
 
 export default withStyles(productStyle)(Map);

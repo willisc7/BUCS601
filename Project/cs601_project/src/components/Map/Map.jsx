@@ -32,31 +32,13 @@ class Map extends React.Component {
                 googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAdz_DA_uiQDeYmYfVJMWW7YH8phMC0UIA&v=3&libraries=geometry,drawing,places",
                 loadingElement: <div style={{ height: `100%` }} />,
                 containerElement: <div style={{ height: `400px` }} />,
-                mapElement: <div style={{ height: `100%` }} />,
+                mapElement: <div style={{ height: `100%` }} />
             }),
             lifecycle({
                 componentWillMount() {
                     const refs = {};
 
-                    let restaurant_markers = []
-
-                    this.setState({
-
-                        handleAddRestaurantClick: () => {
-                            //store the restaurant the user added in restaurant_locations
-                            restaurant_markers.push(this.state.current_restaurant);
-    
-                            // for debugging purposes
-                            console.clear();
-                            console.log("Current values in restaurant_locations:");
-                            restaurant_markers.forEach(restaurant => {
-                                console.log(restaurant);
-                            });
-                        }
-
-                    })
-                    
-                    this.setState({ restaurant_markers })
+                    let restaurant_markers = [];
 
                     this.setState({
                         bounds: null,
@@ -64,6 +46,7 @@ class Map extends React.Component {
                             lat: 42.3601, lng: -71.0589
                         },
                         markers: [],
+                        restaurant_markers,
                         current_restaurant: "",
                         onMapMounted: ref => {
                             refs.map = ref;
@@ -98,6 +81,16 @@ class Map extends React.Component {
                             this.setState({
                                 center: nextCenter,
                                 markers: nextMarkers
+                            });
+                        },
+                        handleAddRestaurantClick: () => {
+                            //store the restaurant the user added in restaurant_locations
+                            restaurant_markers.push(this.state.current_restaurant);
+
+                            // for debugging purposes
+                            console.log("Current values in restaurant_locations:");
+                            restaurant_markers.forEach(restaurant => {
+                                console.log(restaurant);
                             });
                         }
                     })
@@ -136,17 +129,39 @@ class Map extends React.Component {
                         }}
                     />
                 </SearchBox>
+
+                {/* Marker placed when user searches for a location */}
                 {props.markers.map((marker, index) =>
                     <Marker key={index} position={marker.position} onClick={props.onToggleOpen}>
-                    {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
-                        {<img src="https://pbs.twimg.com/media/DYGA5cFUMAc1zfY.jpg" alt="" />}
-                    </InfoWindow>}
                     </Marker>
                 )}
-                {props.restaurant_markers.map(props => <RestaurantMarker key={props.name} {...props} />)}
+
+                {/* Place all markers stored in restaurant_markers */}
+                {props.restaurant_markers.map(props =>
+                    <RestaurantMarker key={props.name} {...props}>
+                    </RestaurantMarker>
+                )}
+
                 <Button color="info" onClick={props.handleAddRestaurantClick}>Add</Button>
             </GoogleMap>
         );
+
+        /*         const RestaurantMarker = compose(
+                    withStateHandlers(() => ({
+                        isOpen: false,
+                    }), {
+                            onToggleOpen: ({ isOpen }) => () => ({
+                                isOpen: !isOpen,
+                            })
+                        }),
+                    withProps(name, latitude, longitude)
+                )(props =>
+                    <Marker key={name} position={{ lat: latitude, lng: longitude }}>
+                        {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
+                            <img src="https://pbs.twimg.com/media/DYGA5cFUMAc1zfY.jpg" alt="" />
+                        </InfoWindow>}
+                    </Marker>
+                ); */
 
         return (
             <MapWithASearchBox />
@@ -156,7 +171,13 @@ class Map extends React.Component {
 
 class RestaurantMarker extends React.Component {
 
-    state = { open: false }
+    state = {
+        isOpen: false
+    }
+
+    onToggleOpen = ({ isOpen }) => () => ({
+        isOpen: !isOpen,
+    })
 
     render() {
 
@@ -164,14 +185,12 @@ class RestaurantMarker extends React.Component {
 
         return (
             <Marker key={name} position={{ lat: latitude, lng: longitude }}>
-                {this.state.open && (
-                    <InfoWindow onClick={() => this.setState(state => ({ open: !state.open }))}> {name} </InfoWindow>
-                )}
+                {this.state.isOpen && <InfoWindow onCloseClick={this.state.onToggleOpen}>
+                    <img src="https://pbs.twimg.com/media/DYGA5cFUMAc1zfY.jpg" alt="" />
+                </InfoWindow>}
             </Marker>
         )
-
     }
-
 }
 
 export default withStyles(productStyle)(Map);

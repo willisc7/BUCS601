@@ -78,7 +78,7 @@ class Map extends React.Component {
                             });
                         },
                         handleAddRestaurantClick: () => {
-                             let current_restaurant = {
+                            let current_restaurant = {
                                 'id': this.state.current_place.id,
                                 'name': this.state.current_place.name,
                                 'longitude': this.state.current_place.geometry.location.lng(),
@@ -144,6 +144,7 @@ class Map extends React.Component {
                 )}
 
                 <Button color="info" onClick={props.handleAddRestaurantClick}>Add</Button>
+                <Button color="danger">Upload</Button>
             </GoogleMap>
         );
 
@@ -196,23 +197,23 @@ class Map extends React.Component {
 
 class RestaurantMarker extends React.Component {
 
-    state = {open: false}
+    state = { open: false }
 
     render() {
 
-      const { id, name, latitude, longitude } = this.props
-  
-      // Return Restaurant Marker Component.
-      return (
-        <Marker key={id} position={{ lat: latitude, lng: longitude }}>
-          {this.state.open && (
-            <InfoWindow onClick={() => this.setState(state => ({open: !state.open}))}> {name} </InfoWindow>
-          )}
-        </Marker>
-      )
-  
+        const { id, name, latitude, longitude } = this.props
+
+        // Return Restaurant Marker Component.
+        return (
+            <Marker key={id} position={{ lat: latitude, lng: longitude }}>
+                {this.state.open && (
+                    <InfoWindow onClick={() => this.setState(state => ({ open: !state.open }))}> {name} </InfoWindow>
+                )}
+            </Marker>
+        )
+
     }
-  
-  }
+
+}
 
 export default withStyles(productStyle)(Map);

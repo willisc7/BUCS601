@@ -5,6 +5,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
 import Button from "components/CustomButtons/Button.jsx";
+import GridItem from "components/Grid/GridItem.jsx";
+import GridContainer from "components/Grid/GridContainer.jsx";
 
 // react-google-maps components
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
@@ -102,52 +104,57 @@ class Map extends React.Component {
             withScriptjs,
             withGoogleMap
         )(props =>
-            <GoogleMap
-                ref={props.onMapMounted}
-                defaultZoom={15}
-                center={props.center}
-                onBoundsChanged={props.onIdle}
-            >
-                <SearchBox
-                    ref={props.onSearchBoxMounted}
-                    bounds={props.bounds}
-                    controlPosition={google.maps.ControlPosition.TOP_LEFT}
-                    onPlacesChanged={props.onPlacesChanged}
+            <GridContainer justify="center">
+                <GoogleMap
+                    ref={props.onMapMounted}
+                    defaultZoom={15}
+                    center={props.center}
+                    onBoundsChanged={props.onIdle}
                 >
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        style={{
-                            boxSizing: `border-box`,
-                            border: `1px solid transparent`,
-                            width: `240px`,
-                            height: `32px`,
-                            marginTop: `27px`,
-                            padding: `0 12px`,
-                            borderRadius: `3px`,
-                            boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-                            fontSize: `14px`,
-                            outline: `none`,
-                            textOverflow: `ellipses`,
-                        }}
-                    />
-                </SearchBox>
+                    <SearchBox
+                        ref={props.onSearchBoxMounted}
+                        bounds={props.bounds}
+                        controlPosition={google.maps.ControlPosition.TOP_LEFT}
+                        onPlacesChanged={props.onPlacesChanged}
+                    >
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            style={{
+                                boxSizing: `border-box`,
+                                border: `1px solid transparent`,
+                                width: `240px`,
+                                height: `32px`,
+                                marginTop: `27px`,
+                                padding: `0 12px`,
+                                borderRadius: `3px`,
+                                boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                                fontSize: `14px`,
+                                outline: `none`,
+                                textOverflow: `ellipses`,
+                            }}
+                        />
+                    </SearchBox>
 
-                {/* Marker placed when user searches for a location */}
-                {props.markers.map((marker, index) =>
-                    <Marker key={index} position={marker.position} onClick={props.onToggleOpen}>
-                    </Marker>
-                )}
+                    {/* Marker placed when user searches for a location */}
+                    {props.markers.map((marker, index) =>
+                        <Marker key={index} position={marker.position} onClick={props.onToggleOpen}>
+                        </Marker>
+                    )}
 
-                {/* Place all markers stored in restaurant_markers */}
-                {props.restaurant_markers.map(props =>
-                    <RestaurantMarker key={props.id} {...props}>
-                    </RestaurantMarker>
-                )}
-
-                <Button color="info" onClick={props.handleAddRestaurantClick}>Add</Button>
-                <UploadImage />
-            </GoogleMap>
+                    {/* Place all markers stored in restaurant_markers */}
+                    {props.restaurant_markers.map(props =>
+                        <RestaurantMarker key={props.id} {...props}>
+                        </RestaurantMarker>
+                    )}
+                </GoogleMap>
+                <GridItem xs={3}>
+                    <Button color="info" onClick={props.handleAddRestaurantClick}>Add</Button>
+                </GridItem>
+                <GridItem xs={3}>
+                    <UploadImage />
+                </GridItem>
+            </GridContainer>
         );
 
         return (

@@ -2,17 +2,30 @@ import React from "react";
 
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
+import Button from "components/CustomButtons/Button.jsx";
 
 import productStyle from "assets/jss/material-kit-react/views/landingPageSections/productStyle.jsx";
-import Button from "components/CustomButtons/Button.jsx";
 
 class UploadImage extends React.Component {
 
-    state = {}
+    state = { images: [] }
 
     render() {
         return (
-            <Button color="danger">Upload</Button >
+            <div>
+                <input
+                    accept="image/*"
+                    id="contained-button-file"
+                    multiple
+                    type="file"
+                    hidden
+                />
+                <label htmlFor="contained-button-file">
+                    <Button variant="contained" component="span">
+                        Upload
+            </Button>
+                </label>
+            </div>
         )
     }
 }

@@ -7,7 +7,7 @@ import productStyle from "assets/jss/material-kit-react/views/landingPageSection
 import Button from "components/CustomButtons/Button.jsx";
 
 // react-google-maps components
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import SearchBox from "react-google-maps/lib/components/places/SearchBox";
 import { compose, withProps, lifecycle, withStateHandlers } from "recompose";
 import RestaurantMarker from './RestaurantMarker.jsx'

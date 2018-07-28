@@ -14,7 +14,6 @@ class RestaurantMarker extends React.Component {
             if (isOpen.length === 0) {
                 isOpen.push([marker_id], [false])
                 this.setState({ isOpen })
-                console.log("isOpen=" + this.state.isOpen)
                 return
             }
 
@@ -23,7 +22,6 @@ class RestaurantMarker extends React.Component {
 
             // update isOpen state
             this.setState({ isOpen })
-            console.log("isOpen[1]=" + this.state.isOpen[1])
         }
     }
 

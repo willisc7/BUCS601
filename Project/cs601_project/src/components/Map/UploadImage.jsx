@@ -8,7 +8,18 @@ import productStyle from "assets/jss/material-kit-react/views/landingPageSection
 
 class UploadImage extends React.Component {
 
-    state = { images: [] }
+    state = {
+        images: [],
+        selectedFile: null
+    }
+
+    fileChangedHandler = (event) => {
+        this.setState({ selectedFile: event.target.files[0] })
+    }
+
+    uploadHandler = () => {
+        console.log(this.state.selectedFile)
+    }
 
     render() {
         return (
@@ -19,11 +30,16 @@ class UploadImage extends React.Component {
                     multiple
                     type="file"
                     hidden
+                    onChange={this.fileChangedHandler}
                 />
                 <label htmlFor="contained-button-file">
-                    <Button variant="contained" component="span">
+                    <Button color="danger"
+                        variant="contained"
+                        component="span"
+                        onClick={this.uploadHandler}
+                    >
                         Upload
-            </Button>
+                    </Button>
                 </label>
             </div>
         )

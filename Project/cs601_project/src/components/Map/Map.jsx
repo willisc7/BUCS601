@@ -51,7 +51,12 @@ class Map extends React.Component {
                         },
                         markers: [],
                         restaurant_markers,
-                        current_place: null,
+                        current_place: {
+                            'id': null,
+                            'name': null,
+                            'longitude': null,
+                            'latitude': null
+                        },
                         onMapMounted: ref => {
                             refs.map = ref;
                         },
@@ -152,7 +157,7 @@ class Map extends React.Component {
                     <Button color="info" onClick={props.handleAddRestaurantClick}>Add</Button>
                 </GridItem>
                 <GridItem xs={3}>
-                    <UploadImage />
+                    <UploadImage marker_id={props.current_place.id} {...props} />
                 </GridItem>
             </GridContainer>
         );

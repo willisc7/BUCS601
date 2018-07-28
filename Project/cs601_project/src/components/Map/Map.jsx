@@ -11,6 +11,7 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 import SearchBox from "react-google-maps/lib/components/places/SearchBox";
 import { compose, withProps, lifecycle, withStateHandlers } from "recompose";
 import RestaurantMarker from './RestaurantMarker.jsx'
+import UploadImage from './UploadImage.jsx'
 
 /*global google*/
 
@@ -145,7 +146,7 @@ class Map extends React.Component {
                 )}
 
                 <Button color="info" onClick={props.handleAddRestaurantClick}>Add</Button>
-                <Button color="danger">Upload</Button>
+                <UploadImage />
             </GoogleMap>
         );
 

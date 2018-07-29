@@ -13,7 +13,6 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-map
 import SearchBox from "react-google-maps/lib/components/places/SearchBox";
 import { compose, withProps, lifecycle, withStateHandlers } from "recompose";
 import RestaurantMarker from './RestaurantMarker.jsx'
-import UploadImage from './UploadImage.jsx'
 
 /*global google*/
 
@@ -50,6 +49,8 @@ class Map extends React.Component {
                             lat: 42.3601, lng: -71.0589
                         },
                         markers: [],
+                        images: [],
+                        selected_image: null,
                         restaurant_markers,
                         current_place: {
                             'id': null,
@@ -102,6 +103,22 @@ class Map extends React.Component {
                             restaurant_markers.forEach(restaurant => {
                                 console.log(restaurant);
                             });
+                        },
+                        handleAddImage: () => {
+                            if (this.state.current_place.id === null || this.state.selected_image === null){
+                                return
+                            }
+                            
+                            // add the unique ID of currently selected place and selected_image to image array
+                            let images = [...this.state.images]
+                            images.push([this.state.current_place.id, this.state.selected_image])
+                            this.setState({ images })
+
+                            console.log(this.state.images)
+                        },
+                        handleImageChosen: (event) => {
+                            // change selected_image to the image the user just chose
+                            this.setState({ selected_image: event.target.files[0] })
                         }
                     })
                 }
@@ -149,16 +166,39 @@ class Map extends React.Component {
 
                     {/* Place all markers stored in restaurant_markers */}
                     {props.restaurant_markers.map(props =>
-                        <RestaurantMarker key={props.id} {...props}>
+                        <RestaurantMarker key={props.id} images={props.images} {...props}>
                         </RestaurantMarker>
                     )}
                 </GoogleMap>
                 <GridItem xs={3}>
-                    <Button color="info" onClick={props.handleAddRestaurantClick}>Add</Button>
+                    <Button color="info" onClick={props.handleAddRestaurantClick}>Add Restaurant</Button>
                 </GridItem>
+
                 <GridItem xs={3}>
-                    <UploadImage marker_id={props.current_place.id} {...props} />
+                    {/* Choose Image button changes the state of selected_image */}
+                    <input
+                        accept="image/*"
+                        id="contained-button-file"
+                        multiple
+                        type="file"
+                        hidden
+                        onChange={props.handleImageChosen}
+                    />
+                    <label htmlFor="contained-button-file">
+                        <Button color="danger"
+                            variant="contained"
+                            component="span"
+                        >
+                            Choose Image
+                    </Button>
+                    </label>
                 </GridItem>
+
+                <GridItem xs={3}>
+                    {/* Add Image button adds the selected_image to the images state array */}
+                    <Button onClick={props.handleAddImage}>Add Image</Button>
+                </GridItem>
+
             </GridContainer>
         );
 

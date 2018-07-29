@@ -22,11 +22,14 @@ class RestaurantMarker extends React.Component {
 
             // update isOpen state
             this.setState({ isOpen })
+
         }
     }
 
     render() {
-        const { id, name, latitude, longitude } = this.props
+        const { id, name, latitude, longitude, images } = this.props
+
+        console.log(images)
 
         return (
             <Marker key={id}
@@ -37,7 +40,7 @@ class RestaurantMarker extends React.Component {
                 {this.state.isOpen[1] && <InfoWindow id={id}
                     onCloseClick={() => { this.state.onToggleOpen(id) }}
                 >
-                    <img src="https://pbs.twimg.com/media/DYGA5cFUMAc1zfY.jpg" alt="" />
+                    <img src="https://pbs.twimg.com/media/DYGA5cFUMAc1zfY.jpg" alt="" />  
                 </InfoWindow>}
             </Marker>
         )

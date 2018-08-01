@@ -9,6 +9,7 @@
     <style>
         .flex-container {
             display: flex;
+            margin: 10px;
 
             /* flex-direction defines which direction the container 
             wants to stack items in it. row = horizontal, column = verticle */
@@ -33,9 +34,15 @@
 
             /* align-items will align the items in the container vertically, but
             there needs to be a height */
-            height: 300px;
-            width: 600px;
+            height: 500px;
             align-items: center;
+            background-color: dodgerblue;
+        }
+
+        .flex-container2 {
+            display: flex;
+            margin: 10px;
+            height: 200px;
             background-color: dodgerblue;
         }
 
@@ -63,6 +70,24 @@
         <div class="flex-item">8</div>
         <div class="flex-item">9</div>
         <div class="flex-item">10</div>
+        <!-- "flex-grow: 2 means the item will grow at twice the speed of the other 
+            flex items" -->
+        <div class="flex-item" style="flex-grow: 2">11</div>
+        <!-- "flex-basis" sets the specific width of the felx item -->
+        <div class="flex-item" style="flex-basis: 200px">12</div>
+        <!-- "flex: 1 1 200px" is a short-hand for item grows at 0x speed of other 
+            items (0), shrinks at 5x speed of other items (1), and with an initial 
+            length of 200 pixels -->
+        <div class="flex-item" style="flex: 0 5 200px">13</div>
     </div>
+
+    <div class="flex-container2">
+            <!-- style="order: 10" will display the item 10th -->
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <!-- "align-self: center" will shrink the item and center it vertically -->
+            <div class="flex-item" style="align-self: center">3</div>
+            <div class="flex-item">4</div>
+        </div>
 </body>
 </html>

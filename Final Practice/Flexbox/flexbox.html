@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <!-- LEFT OFF AT FLEX-GROW ON: https://www.w3schools.com/css/css3_flexbox.asp-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Flexbox</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .flex-container {
+            display: flex;
+
+            /* flex-direction defines which direction the container 
+            wants to stack items in it. row = horizontal, column = verticle */
+            flex-direction: row;
+            
+            /* flex-wrap set to "wrap" will wrap items if they extend beyond
+            horizontal limit */
+            flex-wrap: wrap;
+
+            /* the above two can be combined into "flex-flow: row wrap" */
+            
+            /* justify-content aligns items in the container according to
+            the defined location. flex-start is the default value for this */
+            justify-content: center;
+
+            /* space-around displays items in the container with space before,
+            between, and after the items. space-between just puts space between
+            the items */
+            justify-content: space-around;
+
+            align-content: flex-start;
+
+            /* align-items will align the items in the container vertically, but
+            there needs to be a height */
+            height: 300px;
+            width: 600px;
+            align-items: center;
+            background-color: dodgerblue;
+        }
+
+        .flex-item {
+            width: 100px;
+            margin: 10px;
+            background-color: #f1f1f1;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <!-- style="order: 10" will display the item 10th -->
+        <div class="flex-item" style="order: 10">1</div>
+        <div class="flex-item">2</div>
+        <div class="flex-item">3</div>
+        <div class="flex-item">4</div>
+        <div class="flex-item">5</div>
+        <div class="flex-item">6</div>
+        <div class="flex-item">7</div>
+        <div class="flex-item">8</div>
+        <div class="flex-item">9</div>
+        <div class="flex-item">10</div>
+    </div>
+</body>
+</html>

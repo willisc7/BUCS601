@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>jQuery Loading Image</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        /* When the window object loads, run the code inside function () {} */
+        $(window).load(function () {
+            $('#loading').fadeOut(2000);
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id='loading'>
+        <img id="loading-image" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Loading...">
+    </div>
+</body>
+
+</html>

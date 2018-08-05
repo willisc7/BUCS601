@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Promises</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        //////////////////////////////////
+        // Create the promise
+        // p1 always triggers promise 'reject
+        var p1 = new Promise((resolve, reject) => {
+            // if(true) will always happen
+            if (true)
+                // throws an error, which triggers promise 'reject'
+                throw new Error("p1 rejected!");
+            // this resolve will never happen as written
+            else
+                resolve(4);
+        });
+
+        // p2 always triggers promise 'resolve'
+        var p2 = new Promise((resolve, reject) => {
+            resolve(4);
+        });
+        //////////////////////////////////
+        
+        //////////////////////////////////
+        // Consume the promise
+        // this will always return "error: p1 rejected!"
+        p1.then((val) => val + 2)
+            .then((val) => console.log("got", val))
+            .catch((err) => console.log("error: ", err.message));
+
+        // this will alwats return "p2 resolved and got: 6"
+        p2.then((val) => val + 2)
+            .then((val) => console.log("p2 resolved and got:", val))
+            .catch((err) => console.log("error: ", err.message));
+        //////////////////////////////////
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        let promise1 = new Promise((resolve, reject) => {
+            resolve("promise1 resolved");
+        });
+        let promise2 = new Promise((resolve, reject) => {
+            resolve("promise2 resolved");
+        });
+        let promise3 = new Promise((resolve, reject) => {
+            resolve("promise3 resolved");
+        });
+
+        Promise.all([promise1, promise2, promise3]).then((values) => {
+            console.log(values);
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

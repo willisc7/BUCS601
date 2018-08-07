@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        class Results {
+            constructor(url) {
+                this.url = url
+            }
+
+            fetch_json() {
+                return fetch(this.url)
+            }
+
+        }
+
+        $(function () {
+            $(".number_selector").change(function () {
+                let results = new Results(
+                    "https://jsonplaceholder.typicode.com/posts/" +
+                    $(".number_selector").val()
+                )
+                results.fetch_json()
+                    .then((response) => response.json())
+                    .then(function (data) {
+                        let table = "<dt>" + data.title + "</dt>" +
+                            "<dd>" + data.body + "</dd>"
+                        $(".results").html(table)
+                    });
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <select class="number_selector">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <div class="results"></div>
+</body>
+
+</html>

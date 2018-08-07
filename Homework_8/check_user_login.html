@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(document).ready(function () {
+            let myStorage = window.localStorage;
+            let last_login_time = null;
+            let current_login_time = null;
+            let user_logged_in = false;
+
+            // user has logged in before
+            if (myStorage.getItem("logged_in_user") != null) {
+                user_logged_in = true;
+                $('.welcome_message').text(
+                    "Welcome " +
+                    myStorage.getItem("logged_in_user")
+                )
+            }
+
+            // user hasn't logged in before
+            else {
+                $('.welcome_message').text("Welcome Guest")
+            }
+
+            $(".login_button").click(function () {
+                let current_time = new Date();
+
+                // check for first login
+                if (last_login_time === null) {
+                    myStorage.setItem("logged_in_user", $('.username_input').val());
+                    last_login_time = current_time
+                    current_login_time = current_time
+                    $('.welcome_message').text(
+                        "Welcome " +
+                        myStorage.getItem("logged_in_user") +
+                        " your last login time was " +
+                        last_login_time +
+                        "!"
+                    )
+                }
+
+                // subsequent logins
+                else {
+                    myStorage.setItem("logged_in_user", $('.username_input').val());
+                    current_login_time = current_time;
+                    $('.welcome_message').text(
+                        "Welcome " +
+                        myStorage.getItem("logged_in_user") +
+                        " your last login time was " +
+                        last_login_time +
+                        "!"
+                    )
+                }
+
+                // update last_login_time
+                last_login_time = current_login_time;
+            });
+
+            $(".logout_button").click(function () {
+                myStorage.clear();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    Username:
+    <br>
+    <input type="text" class="username_input">
+    <br> Password:
+    <br>
+    <input type="text">
+    <br>
+    <br>
+    <input type="button" value="Login" class="login_button">
+    <input type="button" value="Logout" class="logout_button">
+    <br>
+    <br>
+    <div class="welcome_message"></div>
+</body>
+
+</html>

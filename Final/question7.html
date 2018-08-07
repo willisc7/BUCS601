@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+
+        /* Arrow functions don’t create their own instance of this. In the below
+        example, this.my_string is 'undefined' inside the arrow function. However,
+        once it's modified inside a regular function it prints to the specified
+        value of 'potato'*/
+
+        $(document).ready(function () {
+            $(".my_button").click(function () {
+
+                Clicked(() =>
+                    this.my_string = "bacon",
+                    console.log("this.my_string inside arrow function: " + this.my_string)
+                )
+            });
+
+            function Clicked() {
+                this.my_string = "potato"
+                console.log("this.my_string inside regular function: "
+                    + this.my_string)
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <button class="my_button">Click Me</button>
+</body>
+
+</html>

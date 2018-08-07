@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("[title='one']").click(function () {
+                $('.one_div').text($("[title='one']").attr('title'))
+            });
+            $("[title='two']").click(function () {
+                $('.two_div').text($("[title='two']").attr('title'))
+            });
+            $("[title='three']").click(function () {
+                $('.three_div').text($("[title='three']").attr('title'))
+            });
+            $("[title='four']").click(function () {
+                $('.four_div').text($("[title='four']").attr('title'))
+            });
+            $("[title='five']").click(function () {
+                $('.five_div').text($("[title='five']").attr('title'))
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>Elements:</h2>
+    <p title="one">Click Me!</p>
+    <div title="two">Click Me!</div>
+    <br>
+    <button title="three">Click Me!</button>
+    <br>
+    <textarea title="four">Click Me!</textarea>
+    <br>
+    <input title="five" type="text" value="Click Me!">
+    <br>
+    <h2>div Targets</h2>
+    <div class="one_div"></div>
+    <div class="two_div"></div>
+    <div class="three_div"></div>
+    <div class="four_div"></div>
+    <div class="five_div"></div>
+</body>
+</html>

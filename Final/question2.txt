@@ -1,0 +1,1 @@
+False (it uses 'npx create-react-app' whereas Angular uses 'ng new app-name').

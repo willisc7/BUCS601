@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(function () {
+            $(".word_count_button").click(function () {
+                let textarea_content = $('.my_textarea').val()
+                let words = textarea_content.trim().replace('/\s+/gi', '').split(' ')
+                let counter = 0;
+
+                words.forEach(word => {
+                    if (word == $('.my_textbox').val()){
+                        counter++
+                    }
+                });
+
+                $(".result").text(`This word appears ${counter} times`)
+            });
+
+            $(".e_count_button").click(function () {
+                let textarea_content = $('.my_textarea').val()
+                let counter = 0;
+
+                for (let i = 0; i < textarea_content.length; i++){
+                    if (textarea_content[i] == 'e' || textarea_content[i] == 'E'){
+                        counter++
+                    }
+                }
+
+                $(".result").text(`The letter e appears ${counter} times`)
+            });
+        });
+    </script>
+</head>
+<body>
+    <textarea class="my_textarea"></textarea>
+    <br>
+    <input class="my_textbox" type="text">
+    <br>
+    <button class="word_count_button">Word Count</button>
+    <button class="e_count_button">E Count</button>
+    <div class="result"></div>
+</body>
+</html>

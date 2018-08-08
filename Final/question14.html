@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(function () {
+            $(".my_button").click(function () {
+                $('.output').text(`All I could think of at this time is ${$(".my_textbox").val()} and that's about it.`)
+            });
+        });
+    </script>
+</head>
+<body>
+    <input class="my_textbox" type="text">
+    <br>
+    <br>
+    <button class="my_button">Click Me</button>
+    <br>
+    <div class="output"></div>
+</body>
+</html>

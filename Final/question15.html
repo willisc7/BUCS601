@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        class Animal {
+            constructor() {
+                this.name = "Unknown"
+            }
+
+            speak() {
+                return "I do not know how to speak. I don't know what type of animal I am at this point."
+            }
+        }
+
+        class Horse extends Animal {
+            constructor (name, racing){
+                super()
+                if (name === undefined) {
+                    this.name = "Silver"
+                }
+                else {
+                    this.name = name
+                    this.racing = racing
+                }
+            }
+
+            speak() {
+                return "neighhhhh!"
+            }
+        }
+
+        let horse = new Horse("potato", false)
+        console.log(horse)
+        console.log(horse.speak())
+
+        let animal = new Animal()
+        console.log(animal)
+        console.log(animal.speak())
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
